@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anushka Pednekar — Content & Marketing Professional</title>
+  <meta name="description" content="Anushka Pednekar is a strategic content and digital marketing professional with 6+ years of experience across IPG and Publicis Groupe." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FBF6F0;
+      color: #2B1810;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── DESIGN TOKENS ────────────────────────────────────── */
+    :root {
+      --cream:      #FBF6F0;
+      --cream-dark: #F3EAE0;
+      --accent:     #C4773B;
+      --accent-lt:  #F0D9C8;
+      --dark:       #2B1810;
+      --mid:        #6B4226;
+      --muted:      #9C7A63;
+      --white:      #FFFFFF;
+      --card-shadow: 0 4px 24px rgba(43,24,16,0.08);
+      --radius:     14px;
+      --transition: 0.3s ease;
+    }
+
+    /* ─── TYPOGRAPHY ───────────────────────────────────────── */
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+    h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); font-weight: 700; }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 600; }
+    h3 { font-size: 1.25rem; font-weight: 600; }
+    p  { font-size: 1rem; color: var(--mid); }
+    a  { color: var(--accent); text-decoration: none; transition: opacity var(--transition); }
+    a:hover { opacity: 0.75; }
+
+    /* ─── UTILITY ──────────────────────────────────────────── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 6rem 0; }
+    .section-alt { background: var(--cream-dark); }
+    .section-dark { background: var(--dark); color: var(--cream); }
+    .section-dark p { color: var(--accent-lt); }
+    .tag {
+      display: inline-block;
+      background: var(--accent-lt);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .section-dark .tag { background: rgba(196,119,59,0.25); color: #F0D9C8; }
+    .divider {
+      width: 48px; height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 1rem 0 1.75rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--card-shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 40px rgba(43,24,16,0.13); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: none;
+    }
+    .btn-primary { background: var(--accent); color: var(--white); }
+    .btn-primary:hover { background: #a8612a; opacity: 1; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+    .btn-outline:hover { background: var(--accent); color: var(--white); opacity: 1; }
+    .btn-white { background: var(--white); color: var(--accent); }
+    .btn-white:hover { background: var(--accent-lt); opacity: 1; }
+
+    /* ─── NAVBAR ───────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(251,246,240,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196,119,59,0.12);
+      transition: box-shadow var(--transition);
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(43,24,16,0.08); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1120px; margin: 0 auto;
+      padding: 1.1rem 1.5rem;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--dark);
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--mid); letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--accent); opacity: 1; }
+    .nav-cta { display: flex; gap: 1rem; align-items: center; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: var(--transition); }
+
+    /* ─── HERO ─────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: var(--dark);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(196,119,59,0.18) 0%, transparent 65%),
+                  radial-gradient(ellipse at 20% 80%, rgba(196,119,59,0.10) 0%, transparent 50%);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      position: relative; z-index: 1;
+      padding: 8rem 0 6rem;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .hero-eyebrow-line { width: 36px; height: 2px; background: var(--accent); }
+    .hero-eyebrow span {
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    .hero-title { color: var(--cream); margin-bottom: 0.25rem; }
+    .hero-title em { color: var(--accent); font-style: normal; }
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: var(--muted); font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    .hero-desc { color: #C8A898; font-size: 1rem; max-width: 480px; margin-bottom: 2.5rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; border-radius: var(--radius); overflow: hidden;
+      border: 1px solid rgba(196,119,59,0.2);
+      background: rgba(196,119,59,0.1);
+    }
+    .hero-stat {
+      background: rgba(43,24,16,0.7);
+      backdrop-filter: blur(8px);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+    }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 700;
+      color: var(--accent); display: block;
+    }
+    .hero-stat-label {
+      font-size: 0.78rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin-top: 0.25rem;
+    }
+    .hero-location {
+      display: flex; align-items: center; gap: 0.5rem;
+      color: var(--muted); font-size: 0.88rem; margin-top: 2rem;
+    }
+    .hero-location svg { color: var(--accent); }
+
+    /* ─── ABOUT ────────────────────────────────────────────── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-image-frame {
+      aspect-ratio: 4/5;
+      background: var(--accent-lt);
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+    }
+    .about-image-frame::after {
+      content: 'AP';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem; font-weight: 700;
+      color: rgba(196,119,59,0.25);
+    }
+    .about-badge {
+      position: absolute; bottom: -1.25rem; right: -1.25rem;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+    }
+    .about-badge strong { display: block; font-size: 1.8rem; font-family: 'Playfair Display', serif; }
+    .about-badge span { font-size: 0.78rem; opacity: 0.9; letter-spacing: 0.05em; }
+    .about-interests { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+    .interest-pill {
+      background: var(--accent-lt);
+      color: var(--mid);
+      font-size: 0.82rem; font-weight: 500;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(196,119,59,0.2);
+    }
+
+    /* ─── EXPERTISE ────────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .skill-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 2px 12px rgba(43,24,16,0.06);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .skill-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow); }
+    .skill-icon {
+      width: 40px; height: 40px;
+      background: var(--accent-lt);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.85rem;
+      font-size: 1.1rem;
+    }
+    .skill-card h4 { font-family: 'Inter', sans-serif; font-size: 0.92rem; font-weight: 600; color: var(--dark); }
+
+    /* ─── EXPERIENCE ───────────────────────────────────────── */
+    .timeline { position: relative; padding-left: 2.5rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: var(--accent-lt);
+    }
+    .timeline-item { position: relative; margin-bottom: 3rem; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -2.5rem;
+      top: 0.35rem; width: 14px; height: 14px;
+      background: var(--accent); border-radius: 50%;
+      border: 3px solid var(--cream);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .timeline-header { margin-bottom: 0.5rem; }
+    .timeline-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 600; color: var(--dark);
+    }
+    .timeline-company {
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--accent); margin: 0.2rem 0;
+    }
+    .timeline-meta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      font-size: 0.8rem; color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .timeline-clients {
+      background: var(--accent-lt);
+      border-radius: 8px; padding: 0.6rem 0.9rem;
+      font-size: 0.82rem; color: var(--mid);
+      margin-bottom: 1rem;
+    }
+    .timeline-clients strong { color: var(--accent); }
+    .timeline-list { list-style: none; }
+    .timeline-list li {
+      position: relative; padding-left: 1.1rem;
+      font-size: 0.92rem; color: var(--mid);
+      margin-bottom: 0.4rem;
+    }
+    .timeline-list li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--accent); font-size: 0.8rem; top: 0.05rem;
+    }
+    .achievements {
+      margin-top: 1rem;
+      background: var(--cream);
+      border-radius: 10px; padding: 1rem 1.25rem;
+    }
+    .achievements h5 {
+      font-size: 0.78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--accent); margin-bottom: 0.5rem;
+    }
+    .achievements li {
+      font-size: 0.85rem; color: var(--mid);
+      margin-bottom: 0.3rem;
+    }
+
+    /* ─── PROJECTS / CLIENTS ───────────────────────────────── */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(43,24,16,0.14); }
+    .project-header {
+      padding: 2rem;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .project-type {
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--accent); margin-bottom: 0.5rem;
+    }
+    .project-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .project-body { padding: 1.5rem 2rem; }
+    .project-brief, .project-execution {
+      margin-bottom: 1rem;
+    }
+    .project-brief strong, .project-execution strong {
+      display: block; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--accent); margin-bottom: 0.3rem;
+    }
+    .project-brief p, .project-execution p {
+      font-size: 0.88rem;
+    }
+
+    /* ─── CLIENT LOGOS ─────────────────────────────────────── */
+    .clients-section { text-align: center; }
+    .clients-grid {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .client-chip {
+      background: var(--white);
+      border: 1.5px solid var(--accent-lt);
+      border-radius: 999px;
+      padding: 0.55rem 1.4rem;
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--mid);
+      box-shadow: 0 2px 8px rgba(43,24,16,0.05);
+      transition: all var(--transition);
+    }
+    .client-chip:hover {
+      background: var(--accent); color: var(--white);
+      border-color: var(--accent); transform: translateY(-2px);
+    }
+
+    /* ─── AWARDS ───────────────────────────────────────────── */
+    .awards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .award-card {
+      background: rgba(196,119,59,0.1);
+      border: 1px solid rgba(196,119,59,0.25);
+      border-radius: var(--radius);
+      padding: 2rem;
+      position: relative; overflow: hidden;
+    }
+    .award-card::before {
+      content: '🏆';
+      position: absolute; right: 1.5rem; top: 1.5rem;
+      font-size: 2rem; opacity: 0.15;
+    }
+    .award-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.3rem 0.8rem; border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .award-card h3 { font-size: 1.15rem; color: var(--cream); margin-bottom: 0.4rem; }
+    .award-org { font-size: 0.82rem; color: var(--accent); margin-bottom: 0.75rem; font-weight: 600; }
+    .award-card p { font-size: 0.88rem; color: #C8A898; }
+
+    /* ─── CERTIFICATIONS ───────────────────────────────────── */
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; }
+    .cert-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(43,24,16,0.06);
+      border-top: 3px solid var(--accent);
+      transition: transform var(--transition);
+    }
+    .cert-card:hover { transform: translateY(-3px); }
+    .cert-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .cert-card h4 { font-family: 'Inter', sans-serif; font-size: 0.92rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .cert-card p { font-size: 0.8rem; color: var(--muted); }
+
+    /* ─── TOOLS ────────────────────────────────────────────── */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
+    .tool-group {
+      background: rgba(196,119,59,0.08);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      border: 1px solid rgba(196,119,59,0.15);
+    }
+    .tool-group h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--accent); margin-bottom: 1rem;
+    }
+    .tool-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tool-tag {
+      background: rgba(196,119,59,0.15);
+      color: #F0D9C8; font-size: 0.8rem;
+      padding: 0.3rem 0.75rem; border-radius: 999px;
+    }
+
+    /* ─── VOLUNTEER ────────────────────────────────────────── */
+    .volunteer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .vol-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      box-shadow: var(--card-shadow);
+      border-bottom: 4px solid var(--accent);
+    }
+    .vol-badge {
+      display: inline-block;
+      background: var(--accent-lt);
+      color: var(--accent);
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0.25rem 0.75rem; border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+    .vol-card h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+    .vol-org { font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
+
+    /* ─── RESUME ───────────────────────────────────────────── */
+    #resume {
+      text-align: center;
+      background: linear-gradient(135deg, var(--dark) 0%, #3D1F0F 100%);
+    }
+    .resume-inner { max-width: 600px; margin: 0 auto; }
+    .resume-icon {
+      width: 72px; height: 72px;
+      background: rgba(196,119,59,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+    }
+    #resume h2 { color: var(--cream); }
+    #resume p { color: #C8A898; margin: 1rem 0 2rem; }
+
+    /* ─── CONTACT ──────────────────────────────────────────── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.25rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(43,24,16,0.06);
+      margin-bottom: 1rem;
+      transition: transform var(--transition);
+    }
+    .contact-item:hover { transform: translateX(4px); }
+    .contact-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: var(--accent-lt);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .contact-item h4 { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .contact-item p, .contact-item a { font-size: 0.95rem; color: var(--dark); font-weight: 500; }
+    .contact-message h3 { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .contact-message p { margin-bottom: 1.5rem; }
+
+    /* ─── FOOTER ───────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      color: var(--muted);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.85rem;
+    }
+    footer span { color: var(--accent); }
+
+    /* ─── ANIMATIONS ───────────────────────────────────────── */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up-delay-1 { transition-delay: 0.1s; }
+    .fade-up-delay-2 { transition-delay: 0.2s; }
+    .fade-up-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── MOBILE MENU ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 64px; left: 0; right: 0;
+        background: var(--cream);
+        padding: 1.5rem;
+        gap: 1.25rem;
+        border-bottom: 1px solid var(--accent-lt);
+        z-index: 99;
+      }
+      .hamburger { display: flex; }
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-grid { padding: 7rem 0 4rem; }
+      .hero-stats { grid-template-columns: repeat(3, 1fr); }
+      .hero-stat-num { font-size: 1.6rem; }
+      .about-badge { bottom: 0.5rem; right: 0.5rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-stats { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .section { padding: 4rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─────────────────────────────────────────── -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Anushka <span>P.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="assets/AnushkaP_Resume.pdf" download class="btn btn-primary">Download CV</a>
+      </div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ───────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow">
+            <div class="hero-eyebrow-line"></div>
+            <span>Content &amp; Marketing Professional</span>
+          </div>
+          <h1 class="hero-title">
+            Anushka<br><em>Pednekar</em>
+          </h1>
+          <p class="hero-subtitle">Content that connects. Strategy that converts.</p>
+          <p class="hero-desc">
+            Strategic content and digital marketing professional with 6+ years of experience across global agency networks — driving SEO-led growth, integrated campaigns, and brand storytelling.
+          </p>
+          <div class="hero-btns">
+            <a href="#experience" class="btn btn-primary">View My Work</a>
+            <a href="assets/AnushkaP_Resume.pdf" download class="btn btn-outline" style="color:#F0D9C8; border-color:#F0D9C8;">Download Resume</a>
+          </div>
+          <div class="hero-location">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Melbourne, Australia
+          </div>
+        </div>
+        <div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat-num">32%</span>
+              <div class="hero-stat-label">Traffic Growth</div>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-num">28%</span>
+              <div class="hero-stat-label">Keyword Rankings</div>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-num">38%</span>
+              <div class="hero-stat-label">Social Engagement</div>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-num">6+</span>
+              <div class="hero-stat-label">Years Experience</div>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-num">24%</span>
+              <div class="hero-stat-label">YoY Organic Traffic</div>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-num">2</span>
+              <div class="hero-stat-label">Award Wins</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ──────────────────────────────────────────── -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrap fade-up">
+          <div class="about-image-frame"></div>
+          <div class="about-badge">
+            <strong>6+</strong>
+            <span>Years in Marketing</span>
+          </div>
+        </div>
+        <div>
+          <div class="fade-up">
+            <span class="tag">About Me</span>
+            <h2>A storyteller who turns strategy into impact</h2>
+            <div class="divider"></div>
+            <p style="margin-bottom:1rem;">
+              I'm a Content and Marketing Expert based in Melbourne. My specialisations include content writing and strategy, social media, brand storytelling, and events &amp; campaigns. I thrive at the intersection of creativity and data — building content systems that scale and stories that land.
+            </p>
+            <p style="margin-bottom:1rem;">
+              Having worked across global agency networks including <strong>Interpublic Group (IPG)</strong> and <strong>Publicis Groupe</strong>, I've had the privilege of shaping content for some of the world's most recognised brands — from Adani Group and Amul India to Mondelez and Godrej Group.
+            </p>
+            <p>
+              I specialise in content architecture, multi-channel campaign execution, AI-enhanced workflows, and community engagement — always partnering with senior leadership and cross-functional teams to deliver measurable results.
+            </p>
+          </div>
+          <div class="fade-up fade-up-delay-1">
+            <h4 style="font-family:'Inter',sans-serif; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin:1.75rem 0 0.75rem;">Professional Interests</h4>
+            <div class="about-interests">
+              <span class="interest-pill">AI-Enabled Content Infrastructure</span>
+              <span class="interest-pill">Search Intent &amp; Topic Clustering</span>
+              <span class="interest-pill">Cross-Channel Ecosystems</span>
+              <span class="interest-pill">Community &amp; Trust-Based Branding</span>
+              <span class="interest-pill">Scalable Editorial Operations</span>
+              <span class="interest-pill">Performance-Led Creative Strategy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EXPERTISE ──────────────────────────────────────── -->
+  <section id="expertise" class="section section-alt">
+    <div class="container">
+      <div style="text-align:center; max-width:560px; margin:0 auto 3rem;" class="fade-up">
+        <span class="tag">Core Capabilities</span>
+        <h2>What I bring to every brief</h2>
+        <div class="divider" style="margin:1rem auto 0;"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card fade-up">
+          <div class="skill-icon">✍️</div>
+          <h4>Content Strategy &amp; Editorial Planning</h4>
+        </div>
+        <div class="skill-card fade-up fade-up-delay-1">
+          <div class="skill-icon">🔍</div>
+          <h4>SEO Strategy &amp; Topic Clustering</h4>
+        </div>
+        <div class="skill-card fade-up fade-up-delay-2">
+          <div class="skill-icon">🤖</div>
+          <h4>AI-Powered Content Optimisation</h4>
+        </div>
+        <div class="skill-card fade-up fade-up-delay-3">
+          <div class="skill-icon">🎯</div>
+          <h4>Integrated Campaign Development</h4>
+        </div>
+        <div class="skill-card fade-up">
+          <div class="skill-icon">🗣️</div>
+          <h4>Brand Voice &amp; Messaging Frameworks</h4>
+        </div>
+        <div class="skill-card fade-up fade-up-delay-1">
+          <div class="skill-icon">💻</div>
+          <h4>Website Content &amp; UX Optimisation</h4>
+        </div>
+        <div class="skill-card fade-up fade-up-delay-2">
+          <div class="skill-icon">📱</div>
+          <h4>Social Media Growth Strategy</h4>
+        </div>
+        <div class="skill-card fade-up fade-up-delay-3">
+          <div class="skill-icon">📊</div>
+          <h4>Performance Analytics &amp; Reporting</h4>
+        </div>
+        <div class="skill-card fade-up">
+          <div class="skill-icon">🤝</div>
+          <h4>Cross-Functional Stakeholder Collaboration</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EXPERIENCE ─────────────────────────────────────── -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div style="max-width:560px; margin-bottom:3rem;" class="fade-up">
+        <span class="tag">Work Experience</span>
+        <h2>Where I've made an impact</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="timeline fade-up">
+
+        <!-- ADF -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">Marketing Intern</div>
+            <div class="timeline-company">Australian Dental Foundation</div>
+            <div class="timeline-meta">
+              <span>📅 April 2026 – Present</span>
+              <span>📍 Melbourne, Australia</span>
+            </div>
+          </div>
+          <ul class="timeline-list">
+            <li>Managed partner relationships and increased engagement across fundraising, volunteering, and giving initiatives</li>
+            <li>Led outbound acquisition to identify, onboard, and grow new charity partners</li>
+            <li>Delivered campaigns, events, and awareness initiatives to drive community impact</li>
+            <li>Created and managed content across digital channels, PR, and marketing communications</li>
+            <li>Designed and updated marketing collateral while ensuring brand consistency</li>
+            <li>Coordinated suppliers and production to deliver high-quality assets on time</li>
+          </ul>
+        </div>
+
+        <!-- IPG -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">Content Strategist</div>
+            <div class="timeline-company">Interpublic Group (IPG)</div>
+            <div class="timeline-meta">
+              <span>📅 2022 – 2025</span>
+            </div>
+          </div>
+          <div class="timeline-clients">
+            <strong>Clients:</strong> Adani Group · The Leela · Amul India · Streax India · Mahindra Group · Skoda · World Gold Council
+          </div>
+          <ul class="timeline-list">
+            <li>Led integrated content and SEO strategies increasing organic website traffic by 32% within 12 months</li>
+            <li>Built topic clusters and content roadmaps improving first-page keyword rankings by 28%</li>
+            <li>Defined brand voice and channel strategy frameworks across multi-platform campaigns</li>
+            <li>Contributed to strategic pitch work securing 2 new client partnerships within a financial year</li>
+            <li>Directed short-form and branded content initiatives increasing social engagement by 38%</li>
+            <li>Collaborated with developers to optimise website content and UX, improving conversion rates by 14%</li>
+            <li>Managed cross-channel editorial calendars and performance tracking across SEO, social, and paid campaigns</li>
+            <li>Represented the brand at industry events, capturing live content and stakeholder interviews</li>
+          </ul>
+          <div class="achievements">
+            <h5>Key Achievements</h5>
+            <ul class="timeline-list">
+              <li>Increased website traffic by 32% and improved keyword rankings by 28%, driving measurable client ROI</li>
+              <li>Played a key role in pitches that secured 2 high-value client partnerships in one year</li>
+              <li>Produced live event and branded content that boosted social engagement by 38%</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Publicis -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">Senior Content Writer</div>
+            <div class="timeline-company">Publicis Groupe</div>
+            <div class="timeline-meta">
+              <span>📅 2019 – 2022</span>
+            </div>
+          </div>
+          <div class="timeline-clients">
+            <strong>Clients:</strong> Mondelez · Airtel · Godrej Group · Zee5 · Akasa Air · Bajaj Allianz · Pampers
+          </div>
+          <ul class="timeline-list">
+            <li>Led content workshops and training sessions to strengthen digital content and SEO expertise</li>
+            <li>Built content strategies and contributed to multi-channel campaign planning</li>
+            <li>Developed and managed content calendars ensuring consistent publishing across platforms</li>
+            <li>Produced SEO-driven digital content, increasing organic traffic by 24% year-on-year</li>
+            <li>Optimised on-page SEO elements, improving click-through rates by 18%</li>
+            <li>Contributed to ecommerce and product launch campaigns, generating 20–30% uplift in campaign engagement</li>
+            <li>Translated analytics insights into content optimisation strategies, improving landing page conversions by 11%</li>
+          </ul>
+          <div class="achievements">
+            <h5>Key Achievements</h5>
+            <ul class="timeline-list">
+              <li>Boosted year-on-year organic traffic by 24% through targeted SEO content production</li>
+              <li>Achieved 20–30% increase in engagement for product launch and ecommerce campaigns</li>
+              <li>Enhanced landing page performance by 11% through analytics-driven optimisation</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Internships -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">Junior Content Strategist</div>
+            <div class="timeline-company">Andaman Diaries</div>
+            <div class="timeline-meta"><span>📅 Jun 2018 – Aug 2018</span></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">Junior Content Writer</div>
+            <div class="timeline-company">Spacebar</div>
+            <div class="timeline-meta"><span>📅 May 2017 – Jul 2017</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURED PROJECTS ──────────────────────────────── -->
+  <section id="projects" class="section section-alt">
+    <div class="container">
+      <div style="text-align:center; max-width:560px; margin:0 auto 3rem;" class="fade-up">
+        <span class="tag">Featured Work</span>
+        <h2>Selected Projects</h2>
+        <div class="divider" style="margin:1rem auto 0;"></div>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card fade-up">
+          <div class="project-header">
+            <div class="project-type">Charity · Events · Content</div>
+            <h3>Australian Dental Foundation</h3>
+          </div>
+          <div class="project-body">
+            <div class="project-brief">
+              <strong>The Brief</strong>
+              <p>Support awareness of the Australian Dental Foundation's initiatives through event marketing, partnerships, and content-driven engagement.</p>
+            </div>
+            <div class="project-execution">
+              <strong>The Execution</strong>
+              <p>Delivered on-site activations at events, drove partnership outreach, and created content to amplify messaging and increase community awareness and participation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-up fade-up-delay-1">
+          <div class="project-header">
+            <div class="project-type">Social Media · Community · Events</div>
+            <h3>Parent Thread Australia</h3>
+          </div>
+          <div class="project-body">
+            <div class="project-brief">
+              <strong>The Brief</strong>
+              <p>Build a social media presence that felt human and community-first for a motherhood support platform — driving awareness, engagement, and event participation without feeling promotional.</p>
+            </div>
+            <div class="project-execution">
+              <strong>The Execution</strong>
+              <p>Led social and event-driven marketing that drove sold-out events and a highly engaged community. Transformed the brand from a content presence into a community-driven platform delivering consistent engagement and meaningful impact.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-up fade-up-delay-2">
+          <div class="project-header">
+            <div class="project-type">Digital Strategy · Retail · E-commerce</div>
+            <h3>Cotton On</h3>
+          </div>
+          <div class="project-body">
+            <div class="project-brief">
+              <strong>The Brief</strong>
+              <p>Develop a digital marketing strategy to strengthen Cotton On's online presence and enhance the customer shopping experience across a broad, diverse audience.</p>
+            </div>
+            <div class="project-execution">
+              <strong>The Execution</strong>
+              <p>Designed a social-first digital strategy centred on personalised content, community-driven campaigns, and integrated digital touchpoints — engaging diverse audience segments and driving conversions.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ALL CLIENTS -->
+      <div class="clients-section" style="margin-top:4rem;" >
+        <div class="fade-up">
+          <span class="tag">Brands I've Worked With</span>
+          <h2 style="margin-bottom:0.5rem;">Trusted by leading brands</h2>
+          <p style="color:var(--muted);">Across IPG, Publicis Groupe, and independent projects</p>
+        </div>
+        <div class="clients-grid fade-up">
+          <span class="client-chip">Adani Group</span>
+          <span class="client-chip">The Leela</span>
+          <span class="client-chip">Amul India</span>
+          <span class="client-chip">Streax India</span>
+          <span class="client-chip">Mahindra Group</span>
+          <span class="client-chip">Skoda</span>
+          <span class="client-chip">World Gold Council</span>
+          <span class="client-chip">Mondelez</span>
+          <span class="client-chip">Airtel</span>
+          <span class="client-chip">Godrej Group</span>
+          <span class="client-chip">Zee5</span>
+          <span class="client-chip">Akasa Air</span>
+          <span class="client-chip">Bajaj Allianz</span>
+          <span class="client-chip">Pampers</span>
+          <span class="client-chip">Cotton On</span>
+          <span class="client-chip">Australian Dental Foundation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── VOLUNTEER ──────────────────────────────────────── -->
+  <section id="volunteer" class="section">
+    <div class="container">
+      <div style="max-width:560px; margin-bottom:3rem;" class="fade-up">
+        <span class="tag">Volunteer Experience</span>
+        <h2>Giving back through storytelling</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="volunteer-grid">
+        <div class="vol-card fade-up">
+          <span class="vol-badge">Creative Content &amp; Social Media</span>
+          <h3>Creative Content &amp; Social Media Strategist</h3>
+          <div class="vol-org">Parent Thread Australia</div>
+          <ul class="timeline-list">
+            <li>Developed and executed social content strategies, increasing engagement by 15% within 2 months</li>
+            <li>Produced and edited short-form video content, including Reels, stories, and post-event highlights</li>
+            <li>Captured content at events including behind-the-scenes footage and interviews</li>
+            <li>Grew community reach through targeted storytelling and platform optimisation</li>
+            <li>Assisted in identifying and liaising with potential sponsors for community events</li>
+          </ul>
+        </div>
+        <div class="vol-card fade-up fade-up-delay-1">
+          <span class="vol-badge">Social Media &amp; Engagement</span>
+          <h3>Social Media &amp; Engagement Officer</h3>
+          <div class="vol-org">Dogs Canberra</div>
+          <ul class="timeline-list">
+            <li>Ideated content topics and themes to align with community interests and organisational goals</li>
+            <li>Built and managed comprehensive content calendars across platforms</li>
+            <li>Produced and scheduled content using Meta Business Suite for consistent multi-platform publishing</li>
+            <li>Actively engaged with online communities, replying to comments and facilitating group interactions</li>
+            <li>Monitored community sentiment and feedback to inform content strategy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── AWARDS ─────────────────────────────────────────── -->
+  <section id="awards" class="section section-dark">
+    <div class="container">
+      <div style="text-align:center; max-width:560px; margin:0 auto 3rem;" class="fade-up">
+        <span class="tag">Recognition</span>
+        <h2>Awards &amp; Achievements</h2>
+        <div class="divider" style="margin:1rem auto 0;"></div>
+      </div>
+      <div class="awards-grid fade-up">
+        <div class="award-card">
+          <div class="award-badge">Gold Award</div>
+          <h3>Best Website / Microsite</h3>
+          <div class="award-org">Internet and Mobile Association of India (IAMAI) · Jan 2025</div>
+          <p>Recognised for delivering an innovative, user-centric microsite that drove engagement, enhanced UX, and showcased cutting-edge digital storytelling. Led content strategy, editorial planning, and cross-platform campaign integration.</p>
+        </div>
+        <div class="award-card">
+          <div class="award-badge">Winner</div>
+          <h3>Best Website Design</h3>
+          <div class="award-org">Kyoorius Young Blood · Jun 2024</div>
+          <p>Awarded for creative and strategic website design combining visual storytelling with SEO-driven content architecture. Contributed to concept ideation, content structuring, and digital campaign alignment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CERTIFICATIONS ─────────────────────────────────── -->
+  <section id="certifications" class="section section-alt">
+    <div class="container">
+      <div style="text-align:center; max-width:560px; margin:0 auto 3rem;" class="fade-up">
+        <span class="tag">Certifications</span>
+        <h2>Continuous Learning</h2>
+        <div class="divider" style="margin:1rem auto 0;"></div>
+      </div>
+      <div class="certs-grid fade-up">
+        <div class="cert-card">
+          <div class="cert-icon">📊</div>
+          <h4>Digital Marketing Strategy</h4>
+          <p>RMIT Online</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🤖</div>
+          <h4>AI in Marketing</h4>
+          <p>HubSpot</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📈</div>
+          <h4>Google Analytics for Beginners</h4>
+          <p>Google</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📱</div>
+          <h4>Social Media Content Marketing</h4>
+          <p>Udemy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TOOLS ───────────────────────────────────────────── -->
+  <section id="tools" class="section section-dark">
+    <div class="container">
+      <div style="text-align:center; max-width:560px; margin:0 auto 3rem;" class="fade-up">
+        <span class="tag">Tools &amp; Technology</span>
+        <h2>My tech stack</h2>
+        <div class="divider" style="margin:1rem auto 0;"></div>
+      </div>
+      <div class="tools-grid fade-up">
+        <div class="tool-group">
+          <h4>Content &amp; Design</h4>
+          <div class="tool-tags">
+            <span class="tool-tag">Canva</span>
+            <span class="tool-tag">Figma</span>
+          </div>
+        </div>
+        <div class="tool-group">
+          <h4>SEO &amp; Analytics</h4>
+          <div class="tool-tags">
+            <span class="tool-tag">Google Analytics</span>
+            <span class="tool-tag">Search Console</span>
+            <span class="tool-tag">SEMrush</span>
+          </div>
+        </div>
+        <div class="tool-group">
+          <h4>Social Media</h4>
+          <div class="tool-tags">
+            <span class="tool-tag">Meta Business Suite</span>
+            <span class="tool-tag">Hootsuite</span>
+            <span class="tool-tag">Buffer</span>
+            <span class="tool-tag">LinkedIn</span>
+            <span class="tool-tag">Instagram</span>
+          </div>
+        </div>
+        <div class="tool-group">
+          <h4>AI Tools</h4>
+          <div class="tool-tags">
+            <span class="tool-tag">ChatGPT</span>
+            <span class="tool-tag">Copilot</span>
+          </div>
+        </div>
+        <div class="tool-group">
+          <h4>Collaboration</h4>
+          <div class="tool-tags">
+            <span class="tool-tag">Slack</span>
+            <span class="tool-tag">Trello</span>
+            <span class="tool-tag">Asana</span>
+            <span class="tool-tag">Notion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── RESUME DOWNLOAD ────────────────────────────────── -->
+  <section id="resume" class="section section-dark">
+    <div class="container">
+      <div class="resume-inner fade-up">
+        <div class="resume-icon">📄</div>
+        <h2>My Resume</h2>
+        <p>Download my full CV to explore my experience, achievements, and skills in detail. A comprehensive overview of 6+ years of content and marketing work across global agencies.</p>
+        <a href="assets/AnushkaP_Resume.pdf" download class="btn btn-primary" style="font-size:1rem; padding:1rem 2.5rem;">
+          ↓ &nbsp;Download Resume (PDF)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ────────────────────────────────────────── -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="fade-up">
+          <span class="tag">Get In Touch</span>
+          <h2>Let's create something great together</h2>
+          <div class="divider"></div>
+          <div style="margin-top:2rem;">
+            <div class="contact-item">
+              <div class="contact-icon">✉️</div>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:anushka.p2411@gmail.com">anushka.p2411@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div>
+                <h4>Phone</h4>
+                <a href="tel:+61402672504">+61 402 672 504</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <h4>Location</h4>
+                <p>Melbourne, Australia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-message fade-up fade-up-delay-1">
+          <div class="card">
+            <h3>Ready to collaborate?</h3>
+            <p>Whether you're looking for a content strategist, a campaign partner, or a brand storyteller — I'd love to hear from you. Drop me a line and let's talk.</p>
+            <a href="mailto:anushka.p2411@gmail.com" class="btn btn-primary">Send a Message</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────── -->
+  <footer>
+    <p>© 2026 <span>Anushka Pednekar</span>. Content &amp; Marketing Professional · Melbourne, Australia</p>
+  </footer>
+
+  <!-- ─── JS: SCROLL ANIMATIONS + NAVBAR ────────────────── -->
+  <script>
+    // Navbar scroll shadow
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Fade-up on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Mobile menu
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+    // Close menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    // Animate hero stats counter
+    function animateCounter(el, target, suffix = '') {
+      let current = 0;
+      const increment = target / 60;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current) + suffix;
+      }, 20);
+    }
+    const statsData = [
+      { selector: '.hero-stat:nth-child(1) .hero-stat-num', val: 32, suffix: '%' },
+      { selector: '.hero-stat:nth-child(2) .hero-stat-num', val: 28, suffix: '%' },
+      { selector: '.hero-stat:nth-child(3) .hero-stat-num', val: 38, suffix: '%' },
+      { selector: '.hero-stat:nth-child(4) .hero-stat-num', val: 6,  suffix: '+' },
+      { selector: '.hero-stat:nth-child(5) .hero-stat-num', val: 24, suffix: '%' },
+      { selector: '.hero-stat:nth-child(6) .hero-stat-num', val: 2,  suffix: '' },
+    ];
+    // Trigger counters when hero is visible
+    const heroObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        statsData.forEach(({ selector, val, suffix }) => {
+          const el = document.querySelector(selector);
+          if (el) animateCounter(el, val, suffix);
+        });
+        heroObserver.disconnect();
+      }
+    }, { threshold: 0.3 });
+    heroObserver.observe(document.getElementById('hero'));
+  </script>
+</body>
+</html>

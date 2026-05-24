@@ -601,6 +601,9 @@
       .work-tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
       .work-tabs::-webkit-scrollbar{display:none}
       .work-tab{flex-shrink:0}
+      .studio-cat{grid-template-columns:1fr}
+      .studio-cat-key{margin-bottom:0.35rem;padding-top:0}
+      .studio-pane{padding:1.4rem 1.2rem}
       .hero-title h1{font-size:clamp(1.9rem,8vw,2.8rem)!important}
       h2.display{font-size:clamp(1.7rem,8vw,2.5rem)!important}
       .section-head{gap:0.6rem}
@@ -1032,6 +1035,7 @@
       const next = cur === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
+      window.scrollTo(0, window.scrollY);
     });
 
     // Navbar shadow

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anushka Pednekar — Content & Brand Studio of One</title>
+    <meta name="description"
+      content="Melbourne-based content strategist and brand storyteller. Selected work, case studies, and collaborations." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <style>
+    /* ── RESET ─────────────────────────── */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    img,svg{display:block;max-width:100%}
+    button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+    ::selection{background:#FF5B14;color:#FBF6F0}
+
+    /* ── TOKENS ────────────────────────── */
+    :root{
+      --bg:#F4EFE6;
+      --bg-2:#ECE5D7;
+      --ink:#1A1208;
+      --ink-2:#3A2A1B;
+      --mute:#7A6754;
+      --line:rgba(26,18,8,0.12);
+      --accent:#FF5B14;
+      --accent-2:#E8480A;
+      --cream:#FBF6F0;
+      --dark:#120A04;
+      --radius:18px;
+      --ease:cubic-bezier(.2,.7,.2,1);
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* ── TYPE ──────────────────────────── */
+    .display{
+      font-family:'Fraunces',serif;
+      font-weight:500;
+      letter-spacing:-0.035em;
+      line-height:0.92;
+      font-variation-settings:"opsz" 144;
+    }
+    h1.display{font-size:clamp(3.4rem,12vw,11rem)}
+    h2.display{font-size:clamp(2.4rem,6.5vw,5.5rem);line-height:1.0}
+    h3.display{font-size:clamp(1.6rem,2.8vw,2.4rem);line-height:1.05}
+    .italic{font-style:italic;font-weight:400}
+    .eyebrow{
+      font-family:'Inter',sans-serif;
+      font-size:0.72rem;
+      font-weight:600;
+      letter-spacing:0.22em;
+      text-transform:uppercase;
+      color:var(--mute);
+    }
+    .eyebrow .num{color:var(--accent);font-weight:700;margin-right:0.6rem}
+    a{color:inherit;text-decoration:none}
+
+    /* ── LAYOUT ────────────────────────── */
+    .wrap{max-width:1320px;margin:0 auto;padding:0 2rem}
+    .section{padding:8rem 0;position:relative}
+    .section-dark{background:var(--dark);color:var(--cream)}
+    .section-dark .eyebrow{color:rgba(251,246,240,0.55)}
+    .section-head{
+      display:grid;grid-template-columns:1fr 2fr;gap:3rem;
+      padding-bottom:4rem;border-bottom:1px solid var(--line);margin-bottom:4rem;
+      align-items:end;
+    }
+    .section-dark .section-head{border-color:rgba(251,246,240,0.12)}
+
+    /* ── NAV ───────────────────────────── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:50;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:1.5rem 2rem;
+      transition:background .3s var(--ease),backdrop-filter .3s var(--ease);
+    }
+    nav.scrolled{background:rgba(244,239,230,0.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .logo{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;letter-spacing:-0.02em}
+    .logo .dot{color:var(--accent)}
+    .nav-links{display:flex;gap:2.2rem;list-style:none}
+    .nav-links a{font-size:0.82rem;font-weight:500;color:var(--ink-2);position:relative}
+    .nav-links a::before{content:counter(li,decimal-leading-zero) " / ";font-size:0.65rem;color:var(--mute);margin-right:0.35rem;font-variant-numeric:tabular-nums}
+    .nav-links{counter-reset:li}
+    .nav-links li{counter-increment:li}
+    .nav-links a:hover{color:var(--accent)}
+    .nav-cta{display:flex;align-items:center;gap:1rem}
+    .pill-status{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      background:rgba(26,18,8,0.06);
+      padding:0.45rem 0.9rem;border-radius:999px;
+      font-size:0.75rem;font-weight:500;color:var(--ink-2);
+    }
+    .pulse{width:8px;height:8px;background:#22c55e;border-radius:50%;position:relative}
+    .pulse::after{content:'';position:absolute;inset:-4px;border-radius:50%;background:#22c55e;opacity:.35;animation:ping 1.8s ease-out infinite}
+    @keyframes ping{0%{transform:scale(.6);opacity:.5}100%{transform:scale(1.8);opacity:0}}
+    .hamburger{display:none;flex-direction:column;gap:5px}
+    .hamburger span{width:22px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+
+    /* ── HERO ──────────────────────────── */
+    #hero{
+      min-height:100vh;
+      padding:7rem 0 3rem;
+      display:flex;flex-direction:column;justify-content:space-between;
+      position:relative;overflow:hidden;
+    }
+    .hero-meta{
+      display:flex;justify-content:space-between;align-items:flex-end;
+      padding:0 2rem;gap:2rem;flex-wrap:wrap;
+    }
+    .hero-meta-block{max-width:220px}
+    .hero-meta-block .eyebrow{display:block;margin-bottom:0.4rem}
+    .hero-meta-block p{font-size:0.92rem;color:var(--ink-2)}
+    .hero-title-wrap{padding:0 2rem;flex:1;display:flex;align-items:center}
+    .hero-title{
+      width:100%;
+    }
+    .hero-title h1{margin-bottom:0}
+    .hero-title .accent{color:var(--accent);font-style:italic;font-weight:400}
+    .hero-title .stroke{
+      -webkit-text-stroke:1.5px var(--ink);
+      color:transparent;font-style:italic;font-weight:400;
+    }
+
+    /* ── CAPABILITIES ──────────────── */
+    .cap-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:1rem;
+    }
+    .cap-card{
+      background:var(--cream);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:1.6rem 1.4rem;
+      display:flex;flex-direction:column;gap:0.6rem;
+      transition:transform .3s var(--ease),background .3s var(--ease),border-color .3s var(--ease);
+    }
+    .cap-card:hover{transform:translateY(-3px);background:#fff;border-color:rgba(255,91,20,0.35)}
+    .cap-num{font-family:'Fraunces',serif;font-size:0.9rem;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:0.02em}
+    .cap-card h3{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:500;letter-spacing:-0.01em;color:var(--ink);line-height:1.2}
+    @media(max-width:980px){.cap-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:520px){.cap-grid{grid-template-columns:1fr}}
+
+    /* ── BTNS ──────────────────────────── */
+    .btn{
+      display:inline-flex;align-items:center;gap:0.7rem;
+      padding:1rem 1.6rem;border-radius:999px;
+      font-size:0.85rem;font-weight:600;letter-spacing:0.02em;
+      transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease);
+    }
+    .btn-primary{background:var(--ink);color:var(--cream)}
+    .btn-primary:hover{background:var(--accent);transform:translateY(-2px)}
+    .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+    .btn-ghost:hover{background:var(--ink);color:var(--cream)}
+    .btn-accent{background:var(--accent);color:var(--cream)}
+    .btn-accent:hover{background:var(--accent-2);transform:translateY(-2px)}
+    .btn .arrow{transition:transform .3s var(--ease)}
+    .btn:hover .arrow{transform:translate(3px,-3px)}
+
+    /* ── ABOUT ─────────────────────────── */
+    .about-grid{
+      display:grid;grid-template-columns:1.4fr 1fr;gap:5rem;align-items:start;
+    }
+    .about-lead{
+      font-family:'Fraunces',serif;font-weight:400;
+      font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.3;
+      color:var(--ink);letter-spacing:-0.01em;
+    }
+    .about-lead em{color:var(--accent);font-style:italic}
+    .about-body p{color:var(--ink-2);font-size:1rem;margin-top:1.4rem;max-width:46ch}
+    .about-side{position:sticky;top:6rem}
+    .side-card{
+      background:var(--cream);border-radius:var(--radius);
+      padding:1.8rem;border:1px solid var(--line);
+    }
+    .side-card + .side-card{margin-top:1rem}
+    .side-card h4{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mute);margin-bottom:1rem;font-weight:700}
+    .side-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+    .side-list li{display:flex;justify-content:space-between;font-size:0.92rem;color:var(--ink-2);padding-bottom:0.6rem;border-bottom:1px dashed var(--line)}
+    .side-list li:last-child{border:none;padding-bottom:0}
+    .side-list span{color:var(--mute);font-size:0.82rem;font-variant-numeric:tabular-nums}
+    .chips{display:flex;flex-wrap:wrap;gap:0.45rem}
+    .chip{
+      background:rgba(26,18,8,0.05);border:1px solid var(--line);
+      padding:0.4rem 0.85rem;border-radius:999px;
+      font-size:0.78rem;color:var(--ink-2);
+    }
+
+    /* ── WORK / PROJECTS ───────────────── */
+    .work-list{display:flex;flex-direction:column}
+    .work-item{
+      display:grid;grid-template-columns:80px 1fr 1.2fr 220px;
+      gap:2rem;align-items:center;
+      padding:2.2rem 0;
+      border-top:1px solid var(--line);
+      transition:padding .4s var(--ease);
+      position:relative;
+    }
+    .work-item:last-child{border-bottom:1px solid var(--line)}
+    .work-item:hover{padding:2.6rem 1rem}
+    .work-item:hover .work-title{color:var(--accent)}
+    .work-num{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--mute);font-variant-numeric:tabular-nums}
+    .work-title{font-family:'Fraunces',serif;font-size:clamp(1.6rem,2.6vw,2.2rem);font-weight:500;letter-spacing:-0.02em;transition:color .3s var(--ease);line-height:1.1}
+    .work-desc{color:var(--ink-2);font-size:0.95rem;max-width:42ch}
+    .work-tags{display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:flex-end}
+    .work-tag{font-size:0.7rem;font-weight:500;color:var(--mute);padding:0.3rem 0.7rem;border:1px solid var(--line);border-radius:999px;text-transform:uppercase;letter-spacing:0.08em}
+
+
+    /* ── IMPACT NUMBERS ────────────────── */
+    .impact-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+      border-top:1px solid rgba(251,246,240,0.12);
+      border-bottom:1px solid rgba(251,246,240,0.12);
+    }
+    .impact-item{padding:3rem 1.5rem;border-right:1px solid rgba(251,246,240,0.12)}
+    .impact-item:last-child{border-right:none}
+    .impact-num{font-family:'Fraunces',serif;font-size:clamp(3rem,6vw,5rem);font-weight:500;letter-spacing:-0.04em;color:var(--cream);line-height:1}
+    .impact-num .pct{color:var(--accent);font-style:italic;font-weight:400}
+    .impact-label{margin-top:1rem;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.15em;color:rgba(251,246,240,0.55)}
+
+    /* ── EXPERIENCE ────────────────────── */
+    .exp-list{display:flex;flex-direction:column;gap:1rem}
+    .exp-row{
+      display:grid;grid-template-columns:120px 1.3fr 2fr;
+      gap:2rem;align-items:start;
+      padding:1.8rem;border-radius:var(--radius);
+      background:var(--cream);border:1px solid var(--line);
+      transition:background .3s var(--ease),transform .3s var(--ease);
+    }
+    .exp-row:hover{transform:translateY(-2px);background:#fff}
+    .exp-year{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--accent);font-variant-numeric:tabular-nums;font-weight:500}
+    .exp-role h3{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:500;letter-spacing:-0.01em;margin-bottom:0.3rem}
+    .exp-role .org{font-size:0.85rem;color:var(--mute);font-weight:500}
+    .exp-meta{font-size:0.88rem;color:var(--ink-2);line-height:1.6}
+    .exp-meta .clients{font-size:0.78rem;color:var(--mute);margin-top:0.5rem;display:block}
+
+    /* ── BRAND PILLS ─────────────────── */
+    .brand-pills{
+      display:flex;flex-wrap:wrap;gap:0.75rem;
+    }
+    .brand-pill{
+      font-family:'Fraunces',serif;
+      font-size:1.05rem;font-weight:500;letter-spacing:-0.01em;
+      color:var(--ink);
+      background:var(--cream);
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:0.7rem 1.3rem;
+      transition:background .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease);
+    }
+    .brand-pill:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+
+    /* ── STUDIO (tools/certs combined) ── */
+    .studio-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+    .studio-block{
+      background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);
+      padding:2.2rem;
+    }
+    .studio-block h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.4rem;margin-bottom:1.4rem;letter-spacing:-0.01em}
+    .studio-cats{display:flex;flex-direction:column;gap:1.2rem}
+    .studio-cat{display:grid;grid-template-columns:140px 1fr;gap:1rem;padding-bottom:1.2rem;border-bottom:1px dashed var(--line)}
+    .studio-cat:last-child{border:none;padding-bottom:0}
+    .studio-cat h5{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--mute);font-weight:700;padding-top:0.2rem}
+    .cert-list{list-style:none;display:flex;flex-direction:column;gap:1rem}
+    .cert-list li{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding-bottom:1rem;border-bottom:1px dashed var(--line)}
+    .cert-list li:last-child{border:none;padding-bottom:0}
+    .cert-list .name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:500}
+    .cert-list .by{font-size:0.78rem;color:var(--mute);text-transform:uppercase;letter-spacing:0.1em}
+
+    /* ── RECOGNITION ───────────────────── */
+    .awards-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .award{
+      background:linear-gradient(180deg,rgba(255,91,20,0.08),transparent);
+      border:1px solid rgba(255,91,20,0.25);
+      border-radius:var(--radius);
+      padding:2.5rem;position:relative;overflow:hidden;
+    }
+    .award::before{
+      content:'';position:absolute;right:-40px;top:-40px;
+      width:140px;height:140px;border-radius:50%;
+      background:radial-gradient(circle,rgba(255,91,20,0.2),transparent 70%);
+    }
+    .award-tag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+    .award-tag::before{content:'';width:24px;height:1px;background:var(--accent)}
+    .award h3{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:500;color:var(--cream);margin-bottom:0.5rem;letter-spacing:-0.01em}
+    .award .org{font-size:0.85rem;color:rgba(251,246,240,0.5);margin-bottom:1rem}
+    .award p{font-size:0.92rem;color:rgba(251,246,240,0.75);line-height:1.6}
+
+    /* ── CTA / CONTACT ─────────────────── */
+    #contact{
+      padding:9rem 0 6rem;
+      background:var(--ink);color:var(--cream);
+      position:relative;overflow:hidden;
+    }
+    .cta-bg{
+      position:absolute;inset:-20%;
+      background:radial-gradient(ellipse at 30% 50%,rgba(255,91,20,0.25),transparent 60%),
+                 radial-gradient(ellipse at 80% 80%,rgba(255,91,20,0.15),transparent 50%);
+      pointer-events:none;
+    }
+    .cta-inner{position:relative;text-align:center;max-width:1100px;margin:0 auto;padding:0 2rem}
+    .cta-eyebrow{display:inline-block;margin-bottom:2rem}
+    .cta-title{font-size:clamp(3rem,9vw,8rem);margin-bottom:2.5rem}
+    .cta-title .stroke{-webkit-text-stroke:1.5px var(--cream);color:transparent;font-style:italic;font-weight:400}
+    .cta-mail{
+      display:inline-flex;align-items:center;gap:1rem;
+      font-family:'Fraunces',serif;
+      font-size:clamp(1.4rem,3vw,2.2rem);font-weight:500;
+      color:var(--cream);padding:0.5rem 0;
+      border-bottom:1px solid rgba(251,246,240,0.3);
+      transition:color .3s var(--ease),border-color .3s var(--ease);
+    }
+    .cta-mail:hover{color:var(--accent);border-color:var(--accent)}
+    .cta-channels{
+      display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;
+      margin-top:4rem;padding-top:3rem;
+      border-top:1px solid rgba(251,246,240,0.12);
+    }
+    .channel{text-align:center}
+    .channel .eyebrow{display:block;margin-bottom:0.5rem;color:rgba(251,246,240,0.5)}
+    .channel a, .channel p{font-family:'Fraunces',serif;font-size:1.15rem;color:var(--cream);font-weight:500}
+    .channel a:hover{color:var(--accent)}
+
+    /* ── FOOTER ────────────────────────── */
+    footer{
+      background:var(--ink);color:rgba(251,246,240,0.5);
+      padding:2.5rem 2rem;
+      display:flex;justify-content:space-between;align-items:center;
+      font-size:0.82rem;flex-wrap:wrap;gap:1rem;
+      border-top:1px solid rgba(251,246,240,0.08);
+    }
+    footer .socials{display:flex;gap:1.5rem}
+    footer .socials a:hover{color:var(--accent)}
+
+    /* ── REVEAL ────────────────────────── */
+    .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+    .reveal.in{opacity:1;transform:none}
+    /* ── TOAST ──────────────────────────── */
+    .toast{
+      display:block;margin:1.2rem auto 0;width:max-content;max-width:90%;
+      background:var(--accent);color:var(--cream);
+      padding:0.55rem 1.1rem;border-radius:999px;
+      font-size:0.78rem;font-weight:600;letter-spacing:0.05em;
+      opacity:0;transform:translateY(-6px);pointer-events:none;
+      transition:opacity .25s var(--ease),transform .25s var(--ease);
+    }
+    .toast.show{opacity:1;transform:none}
+    /* ── RESPONSIVE ────────────────────── */
+    @media(max-width:980px){
+      .section{padding:5rem 0}
+      .section-head,.about-grid,.studio-grid,.awards-grid{grid-template-columns:1fr;gap:2rem}
+      .about-side{position:static}
+      .nav-links,.nav-cta .pill-status{display:none}
+      .hamburger{display:flex}
+      .nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--cream);padding:2rem;gap:1.2rem;border-bottom:1px solid var(--line)}
+      .work-item{grid-template-columns:50px 1fr;gap:1rem}
+      .work-desc,.work-tags{display:none}
+      .exp-row{grid-template-columns:1fr;gap:0.8rem}
+      .impact-grid{grid-template-columns:1fr 1fr}
+      .impact-item{border-right:none;border-bottom:1px solid rgba(251,246,240,0.12)}
+      .impact-item:nth-child(odd){border-right:1px solid rgba(251,246,240,0.12)}
+      .hero-meta{display:none}
+    }
+  </style>
+  </head>
+  <body>
+
+    <!-- ── NAV ── -->
+    <nav id="nav">
+      <a href="#hero" class="logo" data-hover>Anushka<span
+          class="dot">.</span></a>
+      <ul class="nav-links" id="navLinks">
+      <li><a href="#capabilities" data-hover>Capabilities</a></li>
+      <li><a href="#about" data-hover>About</a></li>
+      <li><a href="#work" data-hover>Work</a></li>
+        <li><a href="#experience" data-hover>Experience</a></li>
+        <li><a href="#brands" data-hover>Brands</a></li>
+        <li><a href="#recognition" data-hover>Recognition</a></li>
+        <li><a href="#contact" data-hover>Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <div class="hamburger"
+          onclick="document.getElementById('navLinks').classList.toggle('open')">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section id="hero">
+      <div class="hero-meta">
+        <div class="hero-meta-block">
+          <span class="eyebrow">Currently</span>
+          <p>Marketing &amp; Partnerships at Australian Dental Foundation,
+            Melbourne.</p>
+        </div>
+        <div class="hero-meta-block">
+          <span class="eyebrow">Discipline</span>
+          <p>Content strategy · brand storytelling · SEO · social ·
+            campaigns.</p>
+        </div>
+      </div>
+
+      <div class="hero-title-wrap">
+        <div class="hero-title">
+          <h1 class="display">
+            Content&nbsp;that <span class="accent">connects.</span><br>
+            <span class="stroke">Strategy</span>&nbsp;that&nbsp;converts.
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CAPABILITIES ── -->
+    <section id="capabilities" class="section" style="padding-top:5rem;padding-bottom:5rem">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow"><span class="num">01</span>Capabilities</span>
+          <h2 class="display">What I do,<br><span class="italic">in seven</span> disciplines.</h2>
+        </div>
+        <div class="cap-grid reveal">
+          <div class="cap-card"><span class="cap-num">01</span><h3>Brand Storytelling</h3></div>
+          <div class="cap-card"><span class="cap-num">02</span><h3>SEO &amp; Topic Clusters</h3></div>
+          <div class="cap-card"><span class="cap-num">03</span><h3>Editorial Strategy</h3></div>
+          <div class="cap-card"><span class="cap-num">04</span><h3>AI-Enabled Content</h3></div>
+          <div class="cap-card"><span class="cap-num">05</span><h3>Integrated Campaigns</h3></div>
+          <div class="cap-card"><span class="cap-num">06</span><h3>Social Growth</h3></div>
+          <div class="cap-card"><span class="cap-num">07</span><h3>Community Building</h3></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section id="about" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow"><span class="num">02</span>About</span>
+          <h2 class="display">A storyteller<br><span
+              class="italic">behind</span> the brands<br>you already know.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-body reveal">
+            <p class="about-lead">
+              I'm Anushka — a Melbourne-based content &amp; marketing
+              professional with <em>six years</em> of agency-side work for some
+              of the world's most recognised names. I build content systems that
+              scale, and stories that land.
+            </p>
+            <p>Trained inside global networks — <strong>Interpublic Group
+                (IPG)</strong> and <strong>Publicis Groupe</strong> — across
+              Adani Group, Amul India, Mondelez, Godrej Group and more. I sit at
+              the intersection of editorial craft, search intent, and brand
+              strategy.</p>
+            <p>Today, I work with the Australian Dental Foundation on
+              partnerships, campaigns and community-driven content — and take
+              selected freelance projects that need a sharper narrative.</p>
+          </div>
+
+          <aside class="about-side reveal">
+            <div class="side-card">
+              <h4>Focus Areas</h4>
+              <div class="chips">
+                <span class="chip">AI Content Infrastructure</span>
+                <span class="chip">Search Intent</span>
+                <span class="chip">Editorial Ops</span>
+                <span class="chip">Brand Voice</span>
+                <span class="chip">Performance Creative</span>
+                <span class="chip">Community Branding</span>
+              </div>
+            </div>
+            <div class="side-card">
+              <h4>Quick Facts</h4>
+              <ul class="side-list">
+                <li>Based <span>Melbourne, AU</span></li>
+                <li>Experience <span>6+ years</span></li>
+                <li>Networks <span>IPG · Publicis</span></li>
+                <li>Recognition <span>4 awards</span></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WORK ── -->
+    <section id="work" class="section" style="background:var(--bg-2)">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow"><span class="num">03</span>Selected Work</span>
+          <h2 class="display">Case studies <span
+              class="italic">in</span><br>strategy &amp; story.</h2>
+        </div>
+
+        <div class="work-list">
+
+          <a class="work-item" data-hover>
+            <div class="work-num">01</div>
+            <div class="work-title">Australian Dental<br>Foundation</div>
+            <div class="work-desc">On-site activations, partnership outreach and
+              content that amplified community awareness and participation
+              across fundraising initiatives.</div>
+            <div class="work-tags">
+              <span class="work-tag">Charity</span><span
+                class="work-tag">Events</span><span
+                class="work-tag">Content</span>
+            </div>
+          </a>
+
+          <a class="work-item" data-hover>
+            <div class="work-num">02</div>
+            <div class="work-title">Parent Thread<br>Australia</div>
+            <div class="work-desc">Transformed a content presence into a
+              community platform — social &amp; event-driven marketing that
+              drove sold-out events and consistent engagement.</div>
+            <div class="work-tags">
+              <span class="work-tag">Social</span><span
+                class="work-tag">Community</span><span
+                class="work-tag">Events</span>
+            </div>
+          </a>
+
+          <a class="work-item" data-hover>
+            <div class="work-num">03</div>
+            <div class="work-title">Cotton On —<br>Digital Strategy</div>
+            <div class="work-desc">A social-first digital strategy centred on
+              personalised content, community campaigns and integrated
+              touchpoints across a diverse audience.</div>
+            <div class="work-tags">
+              <span class="work-tag">Retail</span><span
+                class="work-tag">E-commerce</span><span
+                class="work-tag">Strategy</span>
+            </div>
+          </a>
+
+          <a class="work-item" data-hover>
+            <div class="work-num">04</div>
+            <div class="work-title">Adani Group —<br>Award-Winning
+              Microsite</div>
+            <div class="work-desc">Content strategy, editorial planning and
+              cross-platform integration for a user-centric microsite — Gold at
+              the IAMAI Awards 2025.</div>
+            <div class="work-tags">
+              <span class="work-tag">Editorial</span><span
+                class="work-tag">SEO</span><span class="work-tag">Award</span>
+            </div>
+          </a>
+
+          <a class="work-item" data-hover>
+            <div class="work-num">05</div>
+            <div class="work-title">Dogs Canberra —<br>Community Channel</div>
+            <div class="work-desc">Built content calendars, ideated themes, and
+              managed Meta Business Suite publishing to grow an engaged
+              volunteer community.</div>
+            <div class="work-tags">
+              <span class="work-tag">Volunteer</span><span
+                class="work-tag">Social</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── IMPACT NUMBERS ── -->
+    <section class="section section-dark" style="padding:6rem 0">
+      <div class="wrap">
+        <div class="section-head reveal"
+          style="border:none;padding-bottom:2rem;margin-bottom:2rem">
+          <span class="eyebrow"><span class="num">04</span>Impact</span>
+          <h2 class="display">Numbers that<br><span class="italic">moved the
+              needle.</span></h2>
+        </div>
+        <div class="impact-grid reveal">
+          <div class="impact-item"><div class="impact-num">32<span
+                class="pct">%</span></div><div class="impact-label">Organic
+              Traffic Growth · IPG</div></div>
+          <div class="impact-item"><div class="impact-num">38<span
+                class="pct">%</span></div><div class="impact-label">Social
+              Engagement Lift</div></div>
+          <div class="impact-item"><div class="impact-num">24<span
+                class="pct">%</span></div><div class="impact-label">YoY Organic
+              · Publicis</div></div>
+          <div class="impact-item"><div class="impact-num">4<span
+                class="pct">×</span></div><div class="impact-label">Industry
+              Award Wins</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EXPERIENCE ── -->
+    <section id="experience" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow"><span class="num">05</span>Experience</span>
+          <h2 class="display">Six years<br><span class="italic">across</span>
+            global networks.</h2>
+        </div>
+
+        <div class="exp-list">
+
+          <div class="exp-row reveal">
+            <div class="exp-year">2026 →</div>
+            <div class="exp-role">
+              <h3>Marketing &amp; Partnerships</h3>
+              <div class="org">Australian Dental Foundation · Melbourne</div>
+            </div>
+            <div class="exp-meta">
+              Partner relationships, outbound acquisition, campaign &amp; event
+              delivery, PR and marketing collateral — driving community impact
+              across fundraising and volunteering.
+            </div>
+          </div>
+
+          <div class="exp-row reveal">
+            <div class="exp-year">2022 — 2025</div>
+            <div class="exp-role">
+              <h3>Content Strategist</h3>
+              <div class="org">Interpublic Group (IPG)</div>
+            </div>
+            <div class="exp-meta">
+              Integrated content &amp; SEO strategies driving +32% organic
+              traffic and +28% first-page rankings. Brand voice frameworks,
+              pitch work securing 2 new partnerships, branded content lifting
+              social engagement +38%.
+              <span class="clients">Adani Group · The Leela · Amul India ·
+                Streax · Mahindra · Skoda · World Gold Council</span>
+            </div>
+          </div>
+
+          <div class="exp-row reveal">
+            <div class="exp-year">2019 — 2022</div>
+            <div class="exp-role">
+              <h3>Senior Content Writer</h3>
+              <div class="org">Publicis Groupe</div>
+            </div>
+            <div class="exp-meta">
+              SEO-led content production with +24% YoY organic growth, +18% CTR
+              via on-page optimisation, 20–30% engagement uplift on launch
+              campaigns, and +11% landing-page conversion through
+              analytics-informed iteration.
+              <span class="clients">Mondelez · Airtel · Godrej Group · Zee5 ·
+                Akasa Air · Bajaj Allianz · Pampers</span>
+            </div>
+          </div>
+
+          <div class="exp-row reveal">
+            <div class="exp-year">2017 — 2018</div>
+            <div class="exp-role">
+              <h3>Early Career</h3>
+              <div class="org">Andaman Diaries · Spacebar</div>
+            </div>
+            <div class="exp-meta">
+              Junior content strategist and writer roles — foundational craft in
+              editorial planning, brand voice, and short-form copy.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BRANDS ── -->
+    <section id="brands" class="section" style="background:var(--bg-2)">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow"><span class="num">06</span>Brands</span>
+          <h2 class="display">Brands I've<br><span class="italic">worked
+              with.</span></h2>
+        </div>
+        <div class="brand-pills reveal">
+          <span class="brand-pill">Adani Group</span>
+          <span class="brand-pill">Amul India</span>
+          <span class="brand-pill">Mondelez</span>
+          <span class="brand-pill">Godrej Group</span>
+          <span class="brand-pill">Mahindra</span>
+          <span class="brand-pill">The Leela</span>
+          <span class="brand-pill">Skoda</span>
+          <span class="brand-pill">Airtel</span>
+          <span class="brand-pill">Zee5</span>
+          <span class="brand-pill">Akasa Air</span>
+          <span class="brand-pill">Bajaj Allianz</span>
+          <span class="brand-pill">Pampers</span>
+          <span class="brand-pill">Cotton On</span>
+          <span class="brand-pill">Streax</span>
+          <span class="brand-pill">World Gold Council</span>
+          <span class="brand-pill">Australian Dental Foundation</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STUDIO ── -->
+    <section id="studio" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow"><span class="num">07</span>The Studio</span>
+          <h2 class="display">Tools, training<br><span
+              class="italic">&amp;</span> the way I work.</h2>
+        </div>
+
+        <div class="studio-grid">
+          <div class="studio-block reveal">
+            <h3>Stack</h3>
+            <div class="studio-cats">
+              <div class="studio-cat"><h5>Content / Design</h5><div
+                  class="chips"><span class="chip">Canva</span><span
+                    class="chip">Figma</span></div></div>
+              <div class="studio-cat"><h5>SEO / Analytics</h5><div
+                  class="chips"><span class="chip">GA4</span><span
+                    class="chip">Search Console</span><span
+                    class="chip">SEMrush</span></div></div>
+              <div class="studio-cat"><h5>Social</h5><div class="chips"><span
+                    class="chip">Meta Business</span><span
+                    class="chip">Hootsuite</span><span
+                    class="chip">Buffer</span><span
+                    class="chip">LinkedIn</span><span
+                    class="chip">Instagram</span></div></div>
+              <div class="studio-cat"><h5>AI</h5><div class="chips"><span
+                    class="chip">ChatGPT</span><span
+                    class="chip">Copilot</span></div></div>
+              <div class="studio-cat"><h5>PM / Collab</h5><div
+                  class="chips"><span class="chip">Slack</span><span
+                    class="chip">Notion</span><span
+                    class="chip">Asana</span><span
+                    class="chip">Trello</span></div></div>
+            </div>
+          </div>
+
+          <div class="studio-block reveal">
+            <h3>Certifications</h3>
+            <ul class="cert-list">
+              <li><span class="name">Digital Marketing Strategy</span><span
+                  class="by">RMIT Online</span></li>
+              <li><span class="name">AI in Marketing</span><span
+                  class="by">HubSpot</span></li>
+              <li><span class="name">Google Analytics for Beginners</span><span
+                  class="by">Google</span></li>
+              <li><span class="name">Social Media Content Marketing</span><span
+                  class="by">Udemy</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RECOGNITION ── -->
+    <section id="recognition" class="section section-dark">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow"><span class="num">08</span>Recognition</span>
+          <h2 class="display">Industry-awarded<br><span
+              class="italic">work.</span></h2>
+        </div>
+        <div class="awards-grid">
+          <div class="award reveal">
+            <div class="award-tag">Gold · Jan 2025</div>
+            <h3>Best Website / Microsite</h3>
+            <div class="org">Internet and Mobile Association of India (IAMAI) ·
+              with IPG</div>
+            <p>For an innovative, user-centric microsite driving engagement and
+              digital storytelling. Led content strategy, editorial planning,
+              and cross-platform campaign integration.</p>
+          </div>
+          <div class="award reveal">
+            <div class="award-tag">Winner · Jun 2024</div>
+            <h3>Best Website Design</h3>
+            <div class="org">Kyoorius Young Blood · with IPG</div>
+            <p>Awarded for combining visual storytelling with SEO-driven content
+              architecture. Contributed to concept ideation, content
+              structuring, and digital campaign alignment.</p>
+          </div>
+          <div class="award reveal">
+            <div class="award-tag">Winner · Aug 2023</div>
+            <h3>Hyper Helper</h3>
+            <div class="org">Interactive Avenues · with IPG</div>
+            <p>Recognised internally at Interactive Avenues (IPG) for going
+              above and beyond in cross-team collaboration, fast-turnaround
+              content support and consistently raising the bar on client
+              work.</p>
+          </div>
+          <div class="award reveal">
+            <div class="award-tag">Winner · Dec 2021</div>
+            <h3>Performics Excellence Awards</h3>
+            <div class="org">Performics · with Publicis Groupe</div>
+            <p>Honoured at Performics (Publicis Groupe) for outstanding
+              contribution to SEO-led content production and campaign
+              performance across multi-brand engagements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact">
+      <div class="cta-bg"></div>
+      <div class="cta-inner reveal">
+        <span class="eyebrow cta-eyebrow"><span class="num"
+            style="color:var(--accent)">09</span>Get In Touch</span>
+        <h2 class="display cta-title">Let's make something<br><span
+            class="stroke">worth reading.</span></h2>
+        <a href="mailto:anushka.p2411@gmail.com" class="cta-mail" id="ctaMail"
+          data-hover>anushka.p2411@gmail.com <span class="arrow">↗</span></a>
+        <div class="toast" id="toast">Email copied to clipboard</div>
+
+        <div class="cta-channels">
+          <div class="channel">
+            <span class="eyebrow">Phone</span>
+            <a href="tel:+61402672504" data-hover>+61 402 672 504</a>
+          </div>
+          <div class="channel">
+            <span class="eyebrow">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/anushka-pednekar-3b5619140/"
+              target="_blank" rel="noopener" data-hover>/in/anushka-pednekar</a>
+          </div>
+          <div class="channel">
+            <span class="eyebrow">Location</span>
+            <p>Melbourne, Australia</p>
+          </div>
+          <div class="channel">
+            <span class="eyebrow">CV</span>
+            <a href="assets/AnushkaP_Resume.pdf" download data-hover>Download
+              PDF ↓</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+      <span>© 2026 Anushka Pednekar — Content &amp; Marketing, Melbourne.</span>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/anushka-pednekar-3b5619140/"
+          target="_blank" rel="noopener" data-hover>LinkedIn ↗</a>
+        <a href="mailto:anushka.p2411@gmail.com" data-hover>Email ↗</a>
+      </div>
+    </footer>
+
+    <!-- ── JS ── -->
+    <script>
+    // Navbar
+    const nav = document.getElementById('nav');
+    addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20));
+
+    // Reveal on scroll
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Email: keep mailto, also copy to clipboard with a toast
+    const ctaMail = document.getElementById('ctaMail');
+    const toast = document.getElementById('toast');
+    if (ctaMail && toast) {
+      ctaMail.addEventListener('click', () => {
+        const email = 'anushka.p2411@gmail.com';
+        const show = () => {
+          toast.classList.add('show');
+          toast.textContent = 'Email copied — anushka.p2411@gmail.com';
+          clearTimeout(toast._t);
+          toast._t = setTimeout(() => toast.classList.remove('show'), 2400);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(show).catch(show);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = email; document.body.appendChild(ta);
+          ta.select(); try { document.execCommand('copy'); } catch (e) {}
+          document.body.removeChild(ta); show();
+        }
+      });
+    }
+  </script>
+  </body>
+</html>

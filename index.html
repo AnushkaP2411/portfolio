@@ -964,7 +964,7 @@
       <span class="eyebrow cta-eyebrow"><span class="num" style="color:var(--accent)">09</span>Get In Touch</span>
       <h2 class="display cta-title">Let's make something<br><span class="stroke">worth reading.</span></h2>
 
-      <!-- ── Contact form via FormSubmit (no backend needed) ── -->
+      <!-- ── Contact form via Web3Forms (no backend needed) ── -->
       <form class="contact-form" id="contactForm" method="POST" novalidate>
         <h3>Send a quick note</h3>
         <input type="hidden" name="_subject" value="New message from your portfolio" />
@@ -1101,8 +1101,8 @@
 
     // ── Custom form validation ──
     const contactForm = document.getElementById('contactForm');
-    const _e = ['anushka.p2411','gmail.com'].join('@');
-    const _ep = 'https://formsubmit.co/ajax/' + _e;
+    const _ep = 'https://api.web3forms.com/submit';
+    const _ak = '26edf43a-5604-4fad-9eb9-4b30aa799ca3';
     if (contactForm) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -1159,10 +1159,11 @@
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
+              access_key: _ak,
               name: contactForm.querySelector('[name=name]').value,
               email: contactForm.querySelector('[name=email]').value,
               message: contactForm.querySelector('[name=message]').value,
-              _subject: 'New message from your portfolio'
+              subject: 'New message from your portfolio'
             })
           })
           .then(res => {

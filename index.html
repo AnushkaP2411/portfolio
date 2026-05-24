@@ -540,7 +540,7 @@
 
     /* ── FOOTER ── */
     footer{
-      background:#120A04;color:rgba(251,246,240,0.5);
+      background:var(--dark);color:rgba(251,246,240,0.5);
       padding:2.5rem 2rem;
       display:flex;justify-content:space-between;align-items:center;
       font-size:0.82rem;flex-wrap:wrap;gap:1rem;
@@ -604,6 +604,8 @@
       .studio-cat{grid-template-columns:1fr}
       .studio-cat-key{margin-bottom:0.35rem;padding-top:0}
       .studio-pane{padding:1.4rem 1.2rem}
+      .brand-row{flex-direction:column;align-items:flex-start;gap:0.6rem}
+      .brand-row-label{width:auto}
       .hero-title h1{font-size:clamp(1.9rem,8vw,2.8rem)!important}
       h2.display{font-size:clamp(1.7rem,8vw,2.5rem)!important}
       .section-head{gap:0.6rem}
@@ -1014,7 +1016,7 @@
   <footer>
     <span>© 2026 Anushka Pednekar - Content &amp; Marketing, Melbourne.</span>
     <div class="socials">
-      <a href="https://www.linkedin.com/in/anushka-pednekar-3b5619140/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://www.linkedin.com/in/anushka-pednekar-3b5619140/" target="_blank" rel="noopener" style="font-variant-emoji:text">LinkedIn →</a>
        
     </div>
   </footer>
@@ -1028,12 +1030,20 @@
 
     // Theme
     const themeToggle = document.getElementById('themeToggle');
-    const stored = localStorage.getItem('theme');
-    if (stored) document.documentElement.setAttribute('data-theme', stored);
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    const THEME_BG = { light: '#F4EFE6', dark: '#120A04' };
+    function applyTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.style.backgroundColor = THEME_BG[t];
+      document.body.style.backgroundColor = THEME_BG[t];
+      if (themeMeta) themeMeta.setAttribute('content', THEME_BG[t]);
+    }
+    const stored = localStorage.getItem('theme') || 'light';
+    applyTheme(stored);
     themeToggle.addEventListener('click', () => {
       const cur = document.documentElement.getAttribute('data-theme');
       const next = cur === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
+      applyTheme(next);
       localStorage.setItem('theme', next);
       window.scrollTo(0, window.scrollY);
     });

@@ -579,7 +579,7 @@
       .work-desc,.work-tags{display:none}
       .exp-head{grid-template-columns:1fr;gap:0.6rem}
       .hero-meta{flex-wrap:wrap;gap:0.5rem}
-      .portrait-wrap{margin-right:0}
+        .portrait-wrap{margin-right:0}
       .about-portrait,.about-side{position:static}
       .form-row{grid-template-columns:1fr}
       .side-dots{display:none}
@@ -589,6 +589,9 @@
       .award{grid-template-columns:1fr}
       .cert-thumb{margin:0 auto}
     }
+      @media(min-width:981px){
+        .portrait-wrap{margin-right:2rem;}
+      }
     @media(max-width:520px){
       .cap-grid,.cap-grid.three{grid-template-columns:1fr}
       .wrap{padding-left:max(1.2rem,env(safe-area-inset-left));padding-right:max(1.2rem,env(safe-area-inset-right))}

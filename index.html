@@ -390,7 +390,7 @@
       gap:1.5rem;align-items:center;
       padding:2rem 0;border-top:1px solid var(--line);
       transition:padding .4s var(--ease);
-      cursor:pointer;
+      cursor:default;
     }
     .work-item:last-child{border-bottom:1px solid var(--line)}
     .work-item:hover{padding:2.4rem 1rem}
@@ -398,8 +398,18 @@
     .work-num,.work-year{font-family:'Fraunces',serif;font-size:1rem;color:var(--mute);font-variant-numeric:tabular-nums}
     .work-year{color:var(--accent)}
     .work-title{font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.5vw,2.1rem);font-weight:500;letter-spacing:-0.02em;transition:color .3s var(--ease);line-height:1.1}
+    .work-title a{display:inline-flex;align-items:center;gap:0.45rem;cursor:pointer}
+    .work-title a::after{content:'↗';font-size:0.8em;color:var(--accent)}
+    .work-copy{display:flex;flex-direction:column;gap:0.7rem;min-width:0}
+    .work-desc{font-size:0.92rem;color:var(--ink-2);line-height:1.65;max-width:64ch}
     .work-tags{display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:flex-end}
-    .work-tag{font-size:0.7rem;font-weight:500;color:var(--mute);padding:0.3rem 0.7rem;border:1px solid var(--line);border-radius:999px;text-transform:uppercase;letter-spacing:0.08em}
+    .work-tag{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;font-size:0.7rem;font-weight:500;color:var(--mute);padding:0.48rem 1.1rem 0.5rem;border:1px solid var(--line);border-radius:999px;text-transform:uppercase;letter-spacing:0.06em;line-height:1.05}
+    .activation-thumb-rotator{margin-top:0.9rem;width:100%;max-width:100%;overflow:hidden}
+    .activation-thumb-track{display:flex;gap:0.7rem;width:max-content;will-change:transform}
+    .activation-thumb{position:relative;flex:0 0 clamp(96px,18vw,140px);aspect-ratio:4/3;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:color-mix(in srgb,var(--ink) 3%,transparent)}
+    .activation-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .activation-thumb-placeholder{display:grid;place-items:center;height:100%;padding:0.8rem;text-align:center;background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 4%,transparent),transparent);color:var(--mute)}
+    .activation-thumb-placeholder span{font-size:0.68rem;line-height:1.45;max-width:12ch}
 
     /* ── PULL QUOTE ── */
     /* ── IMPACT ── */
@@ -588,6 +598,7 @@
       .work-preview{display:none}
       .award{grid-template-columns:1fr}
       .cert-thumb{margin:0 auto}
+      .activation-thumb{flex-basis:clamp(88px,30vw,118px)}
     }
       @media(min-width:981px){
         .portrait-wrap{margin-right:2rem;}
@@ -814,23 +825,190 @@
         <button class="work-tab active" data-tab="social-media">Social Media</button>
         <button class="work-tab" data-tab="blogs">Blogs</button>
         <button class="work-tab" data-tab="websites">Websites &amp; Microsites</button>
-        <button class="work-tab" data-tab="activations">Marketing Activations</button>
+        <button class="work-tab" data-tab="media-releases">Media Releases</button>
+        <button class="work-tab" data-tab="activations">Events &  Activations</button>
       </div>
 
       <div class="work-category active" id="tab-social-media">
-        <div class="work-empty">Coming soon.</div>
+        <div class="work-list">
+          <article class="work-item reveal">
+            <div class="work-num">01</div>
+            <div class="work-year">Ongoing</div>
+            <div class="work-copy">
+              <h3 class="work-title"><a href="https://www.instagram.com/parent_thread/" target="_blank" rel="noreferrer">Parent Thread</a></h3>
+              <p class="work-desc">Managed end-to-end social media operations including content strategy, editorial planning, copywriting, content calendars, and post scheduling through Meta Business Suite. Built community-led, engaging, and parent-centric content designed to grow conversation and trust.</p>
+            </div>
+            <div class="work-tags"><span class="work-tag">Content Strategy</span><span class="work-tag">Editorial Planning</span><span class="work-tag">Meta Business Suite</span><span class="work-tag">Community Growth</span></div>
+          </article>
+          <article class="work-item reveal">
+            <div class="work-num">02</div>
+            <div class="work-year">Current</div>
+            <div class="work-copy">
+              <h3 class="work-title"><a href="https://www.instagram.com/australiandentalfoundation/" target="_blank" rel="noreferrer">Australian Dental Foundation</a></h3>
+              <p class="work-desc">Led social media management and content strategy across digital platforms. Created content calendars, wrote social copy, scheduled content through Metricool, and supported broader long-form content outputs for the organisation.</p>
+            </div>
+            <div class="work-tags"><span class="work-tag">Social Media Management</span><span class="work-tag">Metricool</span><span class="work-tag">Copywriting</span><span class="work-tag">Long-Form Content</span></div>
+          </article>
+        </div>
       </div>
 
       <div class="work-category" id="tab-blogs">
-        <div class="work-empty">Coming soon.</div>
+        <div class="work-list">
+          <article class="work-item reveal">
+            <div class="work-num">01</div>
+            <div class="work-year">SEO</div>
+            <div class="work-copy">
+              <h3 class="work-title"><a href="https://www.theleela.com/travel-diaries" target="_blank" rel="noreferrer">The Leela </a></h3>
+              <p class="work-desc">Conducted SEO keyword research using Google Search Console, identified high-performing search opportunities, developed blog concepts and titles, and wrote SEO-focused travel content aligned with brand voice and audience intent.</p>
+            </div>
+            <div class="work-tags"><span class="work-tag">SEO Research</span><span class="work-tag">Travel Content</span><span class="work-tag">Google Search Console</span><span class="work-tag">Brand Voice</span></div>
+          </article>
+          <article class="work-item reveal">
+            <div class="work-num">02</div>
+            <div class="work-year">Content</div>
+            <div class="work-copy">
+              <h3 class="work-title"><a href="https://www.thepinkfoundry.com/?srsltid=AfmBOorTUy2lGlRYw5aNViEjKC6BPppj1NyZfAzej5q09lWviyZyOEp2" target="_blank" rel="noreferrer">The Pink Foundry</a></h3>
+              <p class="work-desc">Developed blog strategy, content themes, skincare glossaries, and long-form blogs as part of a wider SEO and content revamp. The work focused on clearer content journeys, stronger discoverability, and a more intuitive reading experience.</p>
+            </div>
+            <div class="work-tags"><span class="work-tag">Blog Strategy</span><span class="work-tag">SEO</span><span class="work-tag">Skincare Glossary</span><span class="work-tag">Long-Form Writing</span></div>
+          </article>
+          <article class="work-item reveal">
+            <div class="work-num">03</div>
+            <div class="work-year">Brand</div>
+            <div class="work-copy">
+              <h3 class="work-title">Mondelez</h3>
+              <p class="work-desc">Conducted keyword research and developed SEO-informed long-form content tailored for digital audiences. Focused on creating engaging, brand-aligned storytelling that balanced audience intent, search visibility, and strategic communication goals.</p>
+            </div>
+            <div class="work-tags"><span class="work-tag">Keyword Research</span><span class="work-tag">Storytelling</span><span class="work-tag">SEO Content</span><span class="work-tag">Consumer Audiences</span></div>
+          </article>
+        </div>
       </div>
 
       <div class="work-category" id="tab-websites">
-        <div class="work-empty">Coming soon.</div>
+        <div class="work-list">
+          <article class="work-item reveal">
+            <div class="work-num">01</div>
+            <div class="work-year">Revamp</div>
+            <div class="work-copy">
+              <h3 class="work-title"><a href="https://www.thepinkfoundry.com/?srsltid=AfmBOorTUy2lGlRYw5aNViEjKC6BPppj1NyZfAzej5q09lWviyZyOEp2" target="_blank" rel="noreferrer">The Pink Foundry</a></h3>
+              <p class="work-desc">Worked on content strategy, SEO, and website revamp initiatives including category pages, landing pages, UX copy, banners, and overall site architecture to improve user experience, content flow, and conversion clarity.</p>
+            </div>
+            <div class="work-tags"><span class="work-tag">UX Copy</span><span class="work-tag">Site Architecture</span><span class="work-tag">Landing Pages</span><span class="work-tag">SEO</span></div>
+          </article>
+          <article class="work-item reveal">
+            <div class="work-num">02</div>
+            <div class="work-year">Corporate</div>
+            <div class="work-copy">
+              <h3 class="work-title"><a href="https://www.adani.com/" target="_blank" rel="noreferrer">Adani Group</a></h3>
+              <p class="work-desc">Contributed to website revamp projects including site architecture, content structuring, UX copywriting, banners, and content bucket development to strengthen digital user experience and brand communication.</p>
+            </div>
+            <div class="work-tags"><span class="work-tag">Content Structure</span><span class="work-tag">UX Writing</span><span class="work-tag">Banners</span><span class="work-tag">Website Revamp</span></div>
+          </article>
+          <article class="work-item reveal">
+            <div class="work-num">03</div>
+            <div class="work-year">Microsite</div>
+            <div class="work-copy">
+              <h3 class="work-title">Skechers</h3>
+              <p class="work-desc">Developed content and UX copy for a children’s summer camp microsite, including site architecture, content buckets, banners, and user-focused website copy designed to make the experience clear, engaging, and conversion-friendly.</p>
+            </div>
+            <div class="work-tags"><span class="work-tag">Microsite</span><span class="work-tag">UX Copy</span><span class="work-tag">Site Architecture</span><span class="work-tag">Campaign Content</span></div>
+          </article>
+          <article class="work-item reveal">
+            <div class="work-num">04</div>
+            <div class="work-year">Awarded</div>
+            <div class="work-copy">
+              <h3 class="work-title"><a href="https://www.lodhagroup.com/?utm_source=chatgpt.com" target="_blank" rel="noreferrer">Lodha Group</a></h3>
+              <p class="work-desc">Worked on website content and digital experience revamp initiatives including site architecture, content structuring, UX copywriting, landing pages, and brand-led website communication. The project later received industry recognition for its digital experience and content transformation.</p>
+            </div>
+            <div class="work-tags"><span class="work-tag">Digital Experience</span><span class="work-tag">Landing Pages</span><span class="work-tag">Brand Communication</span><span class="work-tag">Award-Winning Work</span></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="work-category" id="tab-media-releases">
+        <div class="work-list">
+          <article class="work-item reveal">
+            <div class="work-num">01</div>
+            <div class="work-year">Newsroom</div>
+            <div class="work-copy">
+              <h3 class="work-title"><a href="https://www.dentalfoundation.org.au/news/" target="_blank" rel="noreferrer">Australian Dental Foundation</a></h3>
+              <p class="work-desc">Developed long-form organisational content including media releases and newsroom updates that supported campaign visibility, public communication, and the broader content ecosystem around Australian Dental Foundation initiatives.</p>
+            </div>
+            <div class="work-tags"><span class="work-tag">Media Releases</span><span class="work-tag">Newsroom Content</span><span class="work-tag">Long-Form Writing</span><span class="work-tag">Public Communication</span></div>
+          </article>
+        </div>
       </div>
 
       <div class="work-category" id="tab-activations">
-        <div class="work-empty">Coming soon.</div>
+        <div class="work-list">
+          <article class="work-item reveal">
+            <div class="work-num">01</div>
+            <div class="work-year">Victoria</div>
+            <div class="work-copy">
+              <h3 class="work-title">Australian Dental Foundation · Brush for Good</h3>
+              <p class="work-desc">Planned and executed the Brush for Good community initiative across Dandenong, Preston, and Sunshine. Led outreach, on-ground engagement, and promotional activity that helped distribute approximately 7,000 free toothpaste products while strengthening awareness around oral health.</p>
+              <div class="activation-thumb-rotator" data-thumb-rotator>
+                <div class="activation-thumb-track">
+                  <figure class="activation-thumb">
+                    <img src="assets/adf-brush-for-good-1.jpg" alt="Brush for Good thumbnail 1" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
+                    <div class="activation-thumb-placeholder" style="display:none"><span>adf-brush-for-good-1.jpg</span></div>
+                  </figure>
+                  <figure class="activation-thumb">
+                    <img src="assets/adf-brush-for-good-2.jpg" alt="Brush for Good thumbnail 2" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
+                    <div class="activation-thumb-placeholder" style="display:none"><span>adf-brush-for-good-2.jpg</span></div>
+                  </figure>
+                  <figure class="activation-thumb">
+                    <img src="assets/adf-brush-for-good-3.jpg" alt="Brush for Good thumbnail 3" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
+                    <div class="activation-thumb-placeholder" style="display:none"><span>adf-brush-for-good-3.jpg</span></div>
+                  </figure>
+                  <figure class="activation-thumb">
+                    <img src="assets/adf-brush-for-good-4.jpg" alt="Brush for Good thumbnail 4" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
+                    <div class="activation-thumb-placeholder" style="display:none"><span>adf-brush-for-good-4.jpg</span></div>
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="work-tags"><span class="work-tag">Community Initiative</span><span class="work-tag">Event Planning</span><span class="work-tag">On-Ground Activation</span><span class="work-tag">Public Awareness</span></div>
+          </article>
+          <article class="work-item reveal">
+            <div class="work-num">02</div>
+            <div class="work-year">Geelong</div>
+            <div class="work-copy">
+              <h3 class="work-title">Parent Thread Community Events</h3>
+              <p class="work-desc">Planned and organised community-led events across Geelong focused on building social connection and support networks for parents. Managed event coordination, audience engagement, content promotion, and community communications to create inclusive local experiences.</p>
+              <div class="activation-thumb-rotator" data-thumb-rotator>
+                <div class="activation-thumb-track">
+                  <figure class="activation-thumb">
+                    <img src="assets/parent-thread-event-1.jpg" alt="Parent Thread thumbnail 1" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
+                    <div class="activation-thumb-placeholder" style="display:none"><span>parent-thread-event-1.jpg</span></div>
+                  </figure>
+                  <figure class="activation-thumb">
+                    <img src="assets/parent-thread-event-2.jpg" alt="Parent Thread thumbnail 2" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
+                    <div class="activation-thumb-placeholder" style="display:none"><span>parent-thread-event-2.jpg</span></div>
+                  </figure>
+                  <figure class="activation-thumb">
+                    <img src="assets/parent-thread-event-3.jpg" alt="Parent Thread thumbnail 3" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
+                    <div class="activation-thumb-placeholder" style="display:none"><span>parent-thread-event-3.jpg</span></div>
+                  </figure>
+                  <figure class="activation-thumb">
+                    <img src="assets/parent-thread-event-4.jpg" alt="Parent Thread thumbnail 4" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
+                    <div class="activation-thumb-placeholder" style="display:none"><span>parent-thread-event-4.jpg</span></div>
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="work-tags"><span class="work-tag">Event Coordination</span><span class="work-tag">Audience Engagement</span><span class="work-tag">Content Promotion</span><span class="work-tag">Community Building</span></div>
+          </article>
+          <article class="work-item reveal">
+            <div class="work-num">03</div>
+            <div class="work-year">Launch</div>
+            <div class="work-copy">
+              <h3 class="work-title">World Gold Council · India Gold &amp; Jewellery Summit</h3>
+              <p class="work-desc">Contributed to the successful execution of the India Gold &amp; Jewellery Summit, supporting the launch of IAGES and its newly developed website. Worked with cross-functional teams on content coordination, event communications, and digital launch support.</p>
+            </div>
+            <div class="work-tags"><span class="work-tag">Summit Launch</span><span class="work-tag">Event Communications</span><span class="work-tag">Cross-Functional Delivery</span><span class="work-tag">Digital Support</span></div>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -1101,8 +1279,91 @@
         document.querySelectorAll('.work-category').forEach(c => c.classList.remove('active'));
         tab.classList.add('active');
         document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+        requestAnimationFrame(refreshThumbRotators);
       });
     });
+
+    // Activation thumbnail rotators
+    const thumbRotators = [];
+    document.querySelectorAll('[data-thumb-rotator]').forEach(rotator => {
+      const track = rotator.querySelector('.activation-thumb-track');
+      const originalSlides = track ? [...track.children] : [];
+      if (!track || originalSlides.length <= 1) return;
+
+      let gap = 0;
+      let offset = 0;
+
+      function toPx(value) {
+        const n = parseFloat(value || '0');
+        return Number.isFinite(n) ? n : 0;
+      }
+
+      function firstStep() {
+        const first = track.children[0];
+        if (!first) return 0;
+        const width = first.getBoundingClientRect().width;
+        if (!Number.isFinite(width) || width <= 0) return 0;
+        return width + gap;
+      }
+
+      function measureLoop() {
+        if (!rotator.offsetParent) return false;
+        const styles = getComputedStyle(track);
+        gap = toPx(styles.columnGap) || toPx(styles.gap);
+        const firstWidth = originalSlides[0].getBoundingClientRect().width;
+        if (!firstWidth) return false;
+        offset = Math.min(offset, Math.max(0, firstStep() - 1));
+        track.style.transform = `translateX(-${offset}px)`;
+        return true;
+      }
+
+      thumbRotators.push({ rotator, track, measureLoop, firstStep, get offset(){ return offset; }, set offset(v){ offset = v; } });
+      addEventListener('resize', measureLoop, { passive: true });
+      rotator.addEventListener('mouseenter', () => { rotator.dataset.paused = 'true'; });
+      rotator.addEventListener('mouseleave', () => { rotator.dataset.paused = 'false'; });
+      rotator.addEventListener('focusin', () => { rotator.dataset.paused = 'true'; });
+      rotator.addEventListener('focusout', () => { rotator.dataset.paused = 'false'; });
+    });
+
+    function refreshThumbRotators() {
+      thumbRotators.forEach(({ rotator, measureLoop }) => {
+        if (measureLoop()) {
+          rotator.classList.add('is-ready');
+        }
+      });
+    }
+
+    if (thumbRotators.length) {
+      const THUMB_SPEED = 52;
+      let lastNow = 0;
+      function animateThumbRotators(now) {
+        if (!lastNow) lastNow = now;
+        const dt = (now - lastNow) / 1000;
+        lastNow = now;
+        thumbRotators.forEach(state => {
+          const { rotator, track, firstStep } = state;
+          if (!rotator.offsetParent) return;
+          if (rotator.dataset.paused === 'true') return;
+          state.offset += THUMB_SPEED * dt;
+          let step = firstStep();
+          if (!Number.isFinite(step) || step <= 0) {
+            state.offset = 0;
+            track.style.transform = 'translateX(0)';
+            return;
+          }
+          while (step > 0 && state.offset >= step) {
+            state.offset -= step;
+            track.appendChild(track.children[0]);
+            step = firstStep();
+            if (!Number.isFinite(step) || step <= 0) break;
+          }
+          track.style.transform = `translateX(-${state.offset}px)`;
+        });
+        requestAnimationFrame(animateThumbRotators);
+      }
+      refreshThumbRotators();
+      requestAnimationFrame(animateThumbRotators);
+    }
 
     // Impact count-up
     const impactGrid = document.getElementById('impactGrid');

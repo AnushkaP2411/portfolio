@@ -51,6 +51,14 @@
     button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
     ::selection{background:#FF5B14;color:#FBF6F0}
 
+    .skip-link{
+      position:absolute;left:1rem;top:-48px;z-index:1000;
+      background:var(--ink);color:var(--cream);padding:0.55rem 0.8rem;
+      border-radius:8px;font-size:0.82rem;font-weight:600;
+      transition:top .2s var(--ease);
+    }
+    .skip-link:focus{top:1rem}
+
     /* ── THEME TOKENS ── */
     :root,[data-theme="light"]{
       --bg:#F4EFE6;
@@ -399,7 +407,7 @@
     .work-year{color:var(--accent)}
     .work-title{font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.5vw,2.1rem);font-weight:500;letter-spacing:-0.02em;transition:color .3s var(--ease);line-height:1.1}
     .work-title a{display:inline-flex;align-items:center;gap:0.45rem;cursor:pointer}
-    .work-title a::after{content:'↗';font-size:0.8em;color:var(--accent)}
+    .work-title a::after{content:'\2197\FE0E';font-size:0.8em;color:var(--accent);font-family:'Inter',sans-serif}
     .work-copy{display:flex;flex-direction:column;gap:0.7rem;min-width:0}
     .work-desc{font-size:0.92rem;color:var(--ink-2);line-height:1.65;max-width:64ch}
     .work-tags{display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:flex-end}
@@ -410,6 +418,16 @@
     .activation-thumb img{width:100%;height:100%;object-fit:cover;display:block}
     .activation-thumb-placeholder{display:grid;place-items:center;height:100%;padding:0.8rem;text-align:center;background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 4%,transparent),transparent);color:var(--mute)}
     .activation-thumb-placeholder span{font-size:0.68rem;line-height:1.45;max-width:12ch}
+
+    a:focus-visible,button:focus-visible,.work-tab:focus-visible,.theme-toggle:focus-visible{
+      outline:2px solid var(--accent);
+      outline-offset:2px;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+      .reveal{opacity:1;transform:none}
+    }
 
     /* ── PULL QUOTE ── */
     /* ── IMPACT ── */
@@ -585,11 +603,17 @@
       .nav-links{display:none}
       .nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--card);padding:2rem;gap:1.2rem;border-bottom:1px solid var(--line)}
       .hamburger{display:flex;min-width:44px;min-height:44px;align-items:center;justify-content:center;flex-direction:column}
-      .work-item{grid-template-columns:50px 60px 1fr;gap:1rem}
-      .work-desc,.work-tags{display:none}
+      .work-list{gap:0.9rem}
+      .work-item,.work-item:last-child{display:block;border:1px solid var(--line);border-radius:14px;padding:1rem}
+      .work-item:hover{padding:1rem}
+      .work-num,.work-year{display:inline-block;font-size:0.78rem;line-height:1.2;margin-right:0.5rem}
+      .work-copy{gap:0.55rem;margin-top:0.35rem}
+      .work-title{font-size:clamp(1.15rem,4.8vw,1.45rem);line-height:1.2;letter-spacing:-0.01em}
+      .work-desc{display:block;font-size:0.9rem;line-height:1.6;max-width:none}
+      .work-tags{display:none}
       .exp-head{grid-template-columns:1fr;gap:0.6rem}
       .hero-meta{flex-wrap:wrap;gap:0.5rem}
-        .portrait-wrap{margin-right:0}
+      .portrait-wrap{margin-right:0}
       .about-portrait,.about-side{position:static}
       .form-row{grid-template-columns:1fr}
       .side-dots{display:none}
@@ -616,9 +640,11 @@
       .tl-item{flex:0 0 100%}
       .nav-links.open{top:56px}
       .section-head{gap:0.8rem}
-      .work-tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+      .work-tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px;scroll-snap-type:x proximity}
       .work-tabs::-webkit-scrollbar{display:none}
-      .work-tab{flex-shrink:0}
+      .work-tab{flex-shrink:0;min-height:42px;padding:0.56rem 1rem;font-size:0.76rem;scroll-snap-align:start}
+      .work-item,.work-item:last-child{padding:0.9rem}
+      .activation-thumb{flex-basis:clamp(84px,31vw,108px)}
       .studio-cat{grid-template-columns:1fr}
       .studio-cat-key{margin-bottom:0.35rem;padding-top:0}
       .studio-pane{padding:1.4rem 1.2rem}
@@ -632,8 +658,10 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <!-- ── SPLASH ── -->
-  <div class="splash" id="splash">
+  <div class="splash" id="splash" aria-hidden="true">
     <div class="splash-name"><span>A</span><span>P</span><span>.</span></div>
   </div>
 
@@ -641,18 +669,18 @@
   <div class="grain" aria-hidden="true"></div>
 
   <!-- ── SCROLL PROGRESS ── -->
-  <div class="progress-bar" id="progressBar"></div>
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
 
   <!-- ── SIDE DOTS ── -->
   <div class="side-dots" id="sideDots">
-    <a href="#hero"         class="side-dot" data-label="Top"></a>
-    <a href="#capabilities" class="side-dot" data-label="Capabilities"></a>
-    <a href="#about"        class="side-dot" data-label="About"></a>
-    <a href="#work"         class="side-dot" data-label="Work"></a>
-    <a href="#brands"       class="side-dot" data-label="Brands"></a>
-    <a href="#studio"       class="side-dot" data-label="Studio"></a>
-    <a href="#recognition"  class="side-dot" data-label="Recognition"></a>
-    <a href="#contact"      class="side-dot" data-label="Contact"></a>
+    <a href="#hero"         class="side-dot" data-label="Top" aria-label="Go to top section"></a>
+    <a href="#capabilities" class="side-dot" data-label="Capabilities" aria-label="Go to capabilities section"></a>
+    <a href="#about"        class="side-dot" data-label="About" aria-label="Go to about section"></a>
+    <a href="#work"         class="side-dot" data-label="Work" aria-label="Go to selected work section"></a>
+    <a href="#brands"       class="side-dot" data-label="Brands" aria-label="Go to brands section"></a>
+    <a href="#studio"       class="side-dot" data-label="Studio" aria-label="Go to studio section"></a>
+    <a href="#recognition"  class="side-dot" data-label="Recognition" aria-label="Go to recognition section"></a>
+    <a href="#contact"      class="side-dot" data-label="Contact" aria-label="Go to contact section"></a>
   </div>
 
   <!-- ── STICKY CTA ── -->
@@ -661,7 +689,7 @@
   <!-- ── WORK PREVIEW THUMB ── -->
 
   <!-- ── NAV ── -->
-  <nav id="nav">
+  <nav id="nav" aria-label="Primary">
     <a href="#hero" class="logo">Anushka<span class="dot">.</span></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#capabilities">Capabilities</a></li>
@@ -676,11 +704,13 @@
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg class="sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
       </button>
-      <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <button class="hamburger" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-controls="navLinks" aria-expanded="false">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
   </nav>
+
+  <main id="main-content" tabindex="-1">
 
   <!-- ── HERO ── -->
   <section id="hero">
@@ -821,15 +851,15 @@
         <span class="eyebrow"><span class="num">03</span>Selected Work</span>
       </div>
 
-      <div class="work-tabs reveal">
-        <button class="work-tab active" data-tab="social-media">Social Media</button>
-        <button class="work-tab" data-tab="blogs">Blogs</button>
-        <button class="work-tab" data-tab="websites">Websites &amp; Microsites</button>
-        <button class="work-tab" data-tab="media-releases">Media Releases</button>
-        <button class="work-tab" data-tab="activations">Events &  Activations</button>
+      <div class="work-tabs reveal" role="tablist" aria-label="Selected work filters">
+        <button class="work-tab active" id="tab-btn-social-media" type="button" role="tab" aria-controls="tab-social-media" aria-selected="true" tabindex="0" data-tab="social-media">Social Media</button>
+        <button class="work-tab" id="tab-btn-blogs" type="button" role="tab" aria-controls="tab-blogs" aria-selected="false" tabindex="-1" data-tab="blogs">Blogs</button>
+        <button class="work-tab" id="tab-btn-websites" type="button" role="tab" aria-controls="tab-websites" aria-selected="false" tabindex="-1" data-tab="websites">Websites &amp; Microsites</button>
+        <button class="work-tab" id="tab-btn-media-releases" type="button" role="tab" aria-controls="tab-media-releases" aria-selected="false" tabindex="-1" data-tab="media-releases">Media Releases</button>
+        <button class="work-tab" id="tab-btn-activations" type="button" role="tab" aria-controls="tab-activations" aria-selected="false" tabindex="-1" data-tab="activations">Events &amp; Activations</button>
       </div>
 
-      <div class="work-category active" id="tab-social-media">
+      <div class="work-category active" id="tab-social-media" role="tabpanel" aria-labelledby="tab-btn-social-media">
         <div class="work-list">
           <article class="work-item reveal">
             <div class="work-num">01</div>
@@ -852,7 +882,7 @@
         </div>
       </div>
 
-      <div class="work-category" id="tab-blogs">
+      <div class="work-category" id="tab-blogs" role="tabpanel" aria-labelledby="tab-btn-blogs" hidden>
         <div class="work-list">
           <article class="work-item reveal">
             <div class="work-num">01</div>
@@ -884,7 +914,7 @@
         </div>
       </div>
 
-      <div class="work-category" id="tab-websites">
+      <div class="work-category" id="tab-websites" role="tabpanel" aria-labelledby="tab-btn-websites" hidden>
         <div class="work-list">
           <article class="work-item reveal">
             <div class="work-num">01</div>
@@ -925,7 +955,7 @@
         </div>
       </div>
 
-      <div class="work-category" id="tab-media-releases">
+      <div class="work-category" id="tab-media-releases" role="tabpanel" aria-labelledby="tab-btn-media-releases" hidden>
         <div class="work-list">
           <article class="work-item reveal">
             <div class="work-num">01</div>
@@ -939,7 +969,7 @@
         </div>
       </div>
 
-      <div class="work-category" id="tab-activations">
+      <div class="work-category" id="tab-activations" role="tabpanel" aria-labelledby="tab-btn-activations" hidden>
         <div class="work-list">
           <article class="work-item reveal">
             <div class="work-num">01</div>
@@ -1181,12 +1211,12 @@
         <input type="hidden" name="_captcha" value="false" />
         <input type="text"   name="_honey"   style="display:none" />
         <div class="form-row">
-          <div class="form-field" id="field-name"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" autocomplete="name" /><span class="form-error">Please enter your name.</span></div>
-          <div class="form-field" id="field-email"><label for="cf-email">Email</label><input id="cf-email" type="text" name="email" autocomplete="email" /><span class="form-error" id="email-error">Please enter a valid email address.</span></div>
+          <div class="form-field" id="field-name"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" autocomplete="name" aria-describedby="name-error" required /><span class="form-error" id="name-error">Please enter your name.</span></div>
+          <div class="form-field" id="field-email"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" autocomplete="email" aria-describedby="email-error" required /><span class="form-error" id="email-error">Please enter a valid email address.</span></div>
         </div>
-        <div class="form-field" id="field-msg" style="margin-bottom:1rem"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message"></textarea><span class="form-error">Please write a message.</span></div>
+        <div class="form-field" id="field-msg" style="margin-bottom:1rem"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" aria-describedby="msg-error" required></textarea><span class="form-error" id="msg-error">Please write a message.</span></div>
         <button type="submit" id="cf-submit">Send message →</button>
-        <div id="form-toast" class="form-toast"></div>
+        <div id="form-toast" class="form-toast" role="status" aria-live="polite"></div>
       </form>
 
       <div class="cta-channels">
@@ -1196,6 +1226,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ── FOOTER ── -->
   <footer>
@@ -1235,6 +1267,20 @@
 
     // Navbar shadow
     const nav = document.getElementById('nav');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
     addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20));
 
     // Reveal on scroll
@@ -1256,7 +1302,15 @@
       stickyCta.classList.toggle('show', scrolled > window.innerHeight * 0.8 && scrolled < max - 400);
       let activeIdx = 0;
       sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top < window.innerHeight * 0.35) activeIdx = i; });
-      dots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+      dots.forEach((d, i) => {
+        const isActive = i === activeIdx;
+        d.classList.toggle('active', isActive);
+        if (isActive) {
+          d.setAttribute('aria-current', 'location');
+        } else {
+          d.removeAttribute('aria-current');
+        }
+      });
     }
     addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -1273,13 +1327,39 @@
 
 
     // Work tabs
-    document.querySelectorAll('.work-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.work-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.work-category').forEach(c => c.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
-        requestAnimationFrame(refreshThumbRotators);
+    const workTabs = [...document.querySelectorAll('.work-tab')];
+    const workPanels = [...document.querySelectorAll('.work-category')];
+
+    function activateWorkTab(tab, focusTab = false) {
+      workTabs.forEach(t => {
+        const selected = t === tab;
+        t.classList.toggle('active', selected);
+        t.setAttribute('aria-selected', String(selected));
+        t.setAttribute('tabindex', selected ? '0' : '-1');
+      });
+
+      workPanels.forEach(panel => {
+        const active = panel.id === `tab-${tab.dataset.tab}`;
+        panel.classList.toggle('active', active);
+        panel.hidden = !active;
+      });
+
+      if (focusTab) tab.focus();
+      requestAnimationFrame(refreshThumbRotators);
+    }
+
+    workTabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => activateWorkTab(tab));
+      tab.addEventListener('keydown', e => {
+        let nextIdx = idx;
+        if (e.key === 'ArrowRight') nextIdx = (idx + 1) % workTabs.length;
+        if (e.key === 'ArrowLeft') nextIdx = (idx - 1 + workTabs.length) % workTabs.length;
+        if (e.key === 'Home') nextIdx = 0;
+        if (e.key === 'End') nextIdx = workTabs.length - 1;
+        if (nextIdx !== idx) {
+          e.preventDefault();
+          activateWorkTab(workTabs[nextIdx], true);
+        }
       });
     });
 
@@ -1319,8 +1399,6 @@
 
       thumbRotators.push({ rotator, track, measureLoop, firstStep, get offset(){ return offset; }, set offset(v){ offset = v; } });
       addEventListener('resize', measureLoop, { passive: true });
-      rotator.addEventListener('mouseenter', () => { rotator.dataset.paused = 'true'; });
-      rotator.addEventListener('mouseleave', () => { rotator.dataset.paused = 'false'; });
       rotator.addEventListener('focusin', () => { rotator.dataset.paused = 'true'; });
       rotator.addEventListener('focusout', () => { rotator.dataset.paused = 'false'; });
     });
@@ -1409,12 +1487,15 @@
 
       function setError(fieldId, show) {
         const el = document.getElementById(fieldId);
-        if (el) el.classList.toggle('has-error', show);
+        if (!el) return;
+        el.classList.toggle('has-error', show);
+        const input = el.querySelector('input, textarea');
+        if (input) input.setAttribute('aria-invalid', show ? 'true' : 'false');
       }
 
       function clearOnInput(inputEl, fieldId) {
         inputEl.addEventListener('input', () => {
-          document.getElementById(fieldId).classList.remove('has-error');
+          setError(fieldId, false);
         });
       }
 

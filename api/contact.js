@@ -1,3 +1,5 @@
+const https = require('https');
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -9,22 +11,51 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  try {
-    const response = await fetch('https://api.web3forms.com/submit', {
+  const key = process.env.WEB3FORMS_KEY;
+  if (!key) {
+    return res.status(500).json({ error: 'Server misconfiguration' });
+  }
+
+  const payload = JSON.stringify({
+    access_key: key,
+    name,
+    email,
+    message,
+    subject: 'New message from your portfolio'
+  });
+
+  return new Promise((resolve) => {
+    const options = {
+      hostname: 'api.web3forms.com',
+      path: '/submit',
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        access_key: process.env.WEB3FORMS_KEY,
-        name,
-        email,
-        message,
-        subject: 'New message from your portfolio'
-      })
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Content-Length': Buffer.byteLength(payload)
+      }
+    };
+
+    const request = https.request(options, (response) => {
+      let body = '';
+      response.on('data', (chunk) => { body += chunk; });
+      response.on('end', () => {
+        try {
+          const data = JSON.parse(body);
+          res.status(response.statusCode === 200 ? 200 : 500).json(data);
+        } catch {
+          res.status(500).json({ error: 'Invalid response from mail service' });
+        }
+        resolve();
+      });
     });
 
-    const data = await response.json();
-    return res.status(response.ok ? 200 : 500).json(data);
-  } catch {
-    return res.status(500).json({ error: 'Failed to send message' });
-  }
+    request.on('error', () => {
+      res.status(500).json({ error: 'Failed to send message' });
+      resolve();
+    });
+
+    request.write(payload);
+    request.end();
+  });
 };

@@ -11,18 +11,59 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  const key = process.env.WEB3FORMS_KEY;
-  if (!key) {
+  const key = process.env.RESEND_API_KEY;
+  const toEmail = process.env.CONTACT_EMAIL;
+  if (!key || !toEmail) {
     return res.status(500).json({ error: 'Server misconfiguration' });
   }
 
   const payload = JSON.stringify({
-    access_key: key,
-    name,
-    email,
-    message,
-    subject: 'New message from your portfolio'
+    from: 'Portfolio Contact <onboarding@resend.dev>',
+    to: [toEmail],
+    reply_to: email,
+    subject: `New message from ${name} — portfolio`,
+    text: `Name: ${name}\nEmail: ${email}\n\n${message}`
   });
+
+  return new Promise((resolve) => {
+    const options = {
+      hostname: 'api.resend.com',
+      path: '/emails',
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${key}`,
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(payload)
+      }
+    };
+
+    const request = https.request(options, (response) => {
+      let body = '';
+      response.on('data', (chunk) => { body += chunk; });
+      response.on('end', () => {
+        if (response.statusCode === 200 || response.statusCode === 201) {
+          res.status(200).json({ success: true });
+        } else {
+          try {
+            res.status(500).json({ error: 'Failed to send', details: JSON.parse(body) });
+          } catch {
+            res.status(500).json({ error: 'Failed to send' });
+          }
+        }
+        resolve();
+      });
+    });
+
+    request.on('error', () => {
+      res.status(500).json({ error: 'Failed to send message' });
+      resolve();
+    });
+
+    request.write(payload);
+    request.end();
+  });
+};
+
 
   return new Promise((resolve) => {
     const options = {

@@ -1335,11 +1335,13 @@
 
     // Parallax on hero "connects."
     const heroAccent = document.getElementById('heroAccent');
-    addEventListener('scroll', () => {
-      if (scrollY < window.innerHeight) {
-        heroAccent.style.transform = `translateY(${scrollY * 0.15}px)`;
-      }
-    }, { passive: true });
+    if (heroAccent) {
+      addEventListener('scroll', () => {
+        if (scrollY < window.innerHeight) {
+          heroAccent.style.transform = `translateY(${scrollY * 0.15}px)`;
+        }
+      }, { passive: true });
+    }
 
 
 

@@ -42,9 +42,13 @@ module.exports = async function handler(req, res) {
       response.on('end', () => {
         try {
           const data = JSON.parse(body);
-          res.status(response.statusCode === 200 ? 200 : 500).json(data);
+          if (response.statusCode === 200 && data.success) {
+            res.status(200).json(data);
+          } else {
+            res.status(500).json({ error: 'Mail service error', statusCode: response.statusCode, details: data });
+          }
         } catch {
-          res.status(500).json({ error: 'Invalid response from mail service' });
+          res.status(500).json({ error: 'Invalid response from mail service', raw: body });
         }
         resolve();
       });

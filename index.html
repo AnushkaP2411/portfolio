@@ -1500,7 +1500,8 @@
 
     // ── Custom form validation ──
     const contactForm = document.getElementById('contactForm');
-    const _ep = '/api/contact';
+    const _ep = 'https://api.web3forms.com/submit';
+    const _ak = '26edf43a-5604-4fad-9eb9-4b30aa799ca3';
     if (contactForm) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -1560,6 +1561,8 @@
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
+              access_key: _ak,
+              subject: 'New message from your portfolio',
               name: contactForm.querySelector('[name=name]').value,
               email: contactForm.querySelector('[name=email]').value,
               message: contactForm.querySelector('[name=message]').value
